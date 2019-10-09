@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	margin:0;	
+	overflow-x:hidden;
+}
+/*定义导航栏样式*/
+nav {
+	background-color:#199ED8;	
+	height:60px;
+	padding:0 50px;
+}
+/*定义华软Logo样式*/
+nav>img:nth-of-type(1) {
+	height:inherit;
+	vertical-align:middle;
+}
+/*定义'广州大学华软软件学院'文本样式*/
+nav>span {
+	font:normal 27px Arial,Helvetica,sans-serif;
+	color:#FFF;	
+	vertical-align:middle;
+}
+/*定义'登陆'超链接样式*/
+nav>a {	
+	font-size:18px;
+	float:right;
+	margin-top:20px;
+}
+/*定义登陆用户图标样式*/
+nav>img:nth-of-type(2) {
+	height:35px;
+	float:right;
+	margin:15px 5px;
+}
+
+
+/*定义侧边栏样式*/
+aside {
+	position:absolute;
+	top:150px;
+	right:100px;	
+}
+/*定义'精品课程'旁边的装饰*/
+aside>span:empty {
+	background-color:#199ED8;
+	width:20px;
+	height:45px;
+	float:left;
+	margin:0 10px;
+}
+/*定义'精品课程'文本样式*/
+aside>span {
+	font-size:28px;	
+}
+
+/*定义分页样式*/
+#page {
+	margin:100px auto;
+	text-align:center;
+}
+/*分页里的每一个按钮样式*/
+#page>button {
+	height:50px;
+	width:50px;
+	background-color:#FFF;
+	border:1px solid grey;
+	color:DodgerBlue;
+	font-size:20px;
+}
+/*上一页按钮样式*/
+#page>button:first-child {
+	border-radius:6px 0 0 6px;
+}
+/*下一页按钮样式*/
+#page>button:last-child {
+	border-radius:0 6px 6px 0;
+}
+
+/*定义页脚样式*/
+footer {
+	height:100px;
+	background-color:Lavender ;
+	text-align:center;
+	padding-top:10px;
+}
