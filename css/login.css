@@ -1,0 +1,92 @@
+@charset "utf-8";
+/*定义背景样式*/
+body {
+	margin:0;	
+	overflow:hidden;
+	background:url(../image/backgroud.png) no-repeat fixed center center / 100% 100%;
+}
+
+/*定义登陆边框样式*/
+form>fieldset {
+	border:1px solid white;
+	border-radius:20px;
+	width:475px;
+	margin:3% auto;
+}
+/*表单标题样式*/
+form>fieldset>legend {
+	text-align:center;	
+}
+
+/*定义容器DIV样式*/
+form>fieldset>legend+div {
+	margin:30px 50px;
+	text-align:center;
+}
+
+/*定义选项卡的样式*/
+form>fieldset>legend+div>a:nth-of-type(1) , form>fieldset>legend+div>a:nth-of-type(2) {
+	font-size:36px;
+	color:#FFF;	
+	border-bottom:2px solid #33CC33;
+}
+/*定义'普通用户'文本样式*/
+form>fieldset>legend+div>a:nth-of-type(1) {
+	text-align:left;
+	padding:5px 30px 5px 10px;
+}
+/*定义'会员登陆'文本样式*/
+form>fieldset>legend+div>a:nth-of-type(2) {
+	text-align:right;
+	padding:5px 10px 5px 30px;
+}
+
+/*定义学号输入框的样式*/
+form>fieldset>legend+div>div:nth-of-type(1) {
+	margin-top:80px;	
+}
+/*定义密码框样式*/
+form>fieldset>legend+div>div:nth-of-type(2) {
+	margin:60px 0 25px;
+}
+/*定义输入框下面的一条横线*/
+form>fieldset>legend+div>div>hr {
+	border:1px solid #333;
+}
+/*输入框里所有元素垂直居中*/
+form>fieldset>legend+div>div>* {
+	vertical-align:middle;	
+}
+/*定义'用户图标'和'锁图标'的样式*/
+form>fieldset>legend+div>div>img {
+	height:35px;
+}
+/*定义输入框样式*/
+form>fieldset>legend+div>div>input {
+	width:85%;
+	height:25px;
+	font-size:20px;
+	background-color:rgb(0,0,0,0);
+	border:none;
+	margin-left:5px;
+}
+
+/*定义'忘记密码'文本样式*/
+form>fieldset>legend+div>a:nth-of-type(3) {
+	float:right;
+	font-size:20px;
+	color:#333;
+	margin-bottom:30px;
+}
+
+/*定义登陆按钮样式*/
+form>fieldset>legend+div>input[type="submit"] {
+	background-color:#396;
+	border:1px solid #396;
+	width:100%;
+	border-radius:20px;
+	height:70px;	
+	color:#FFF;
+	font-size:20px;
+}
+
