@@ -1,0 +1,66 @@
+@charset "utf-8";
+/*定义表单样式*/
+.container>form {
+	float:right;
+}
+/*定义搜索框样式*/
+.container>form>input[type="search"] {
+	width:200px;
+	height:30px;	
+}
+/*定义搜索按钮样式*/
+.container>form>input[type="button"] {
+	background:url(../image/search.png) no-repeat 50%50%;
+	width:30px;
+	height:30px;
+	border:1px solid #78b0f6;
+	vertical-align:middle;
+}
+
+/*定义容器的样式*/
+.container {
+	margin-left:150px;
+	padding:50px 0;	
+	width:950px;	
+}
+/*对内容的样式进行定义*/
+.container>.content {
+	margin-top:45px;	
+}
+/*定义第一块内容的样式*/
+.container>.content:nth-of-type(2) {
+	margin-top:80px;	
+}
+/*定义封面的样式*/
+.container>.content>img:nth-of-type(1) {
+	width:320px;	
+	float:left;
+	margin-right:15px;
+}
+/*'课程名称'文本样式*/
+.container>.content>p:nth-of-type(1) {
+	font-size:24px;
+}
+/*定义'系别'文本样式*/
+.container>.content>span:nth-of-type(1) {
+	margin-right:40px;	
+}
+/*定义'系别'和'教学团队'文本样式*/
+.container>.content>span:nth-of-type(1) , .container>.content>span:nth-of-type(2) {
+	font-size:16px;
+	color:#999;	
+}
+/*定义'课程描述'文本样式*/
+.container>.content>p:nth-of-type(2) {
+	font-size:16px;
+}
+/*定义用户图标和留言图标的样式*/
+.container>.content>img:nth-of-type(2) , .container>.content>img:nth-of-type(3) {
+	height:15px;
+}
+/*参与用户数和留言评论数的文本样式*/
+.container>.content>span:nth-of-type(3) , .container>.content>span:nth-of-type(4) {
+	vertical-align:buttom;	
+	line-height:200%;
+	margin:0 35px 0 3px;
+}
