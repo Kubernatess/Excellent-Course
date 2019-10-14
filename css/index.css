@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+/*定义有序列表选项的样式*/
+aside>span+ol>li{	
+	margin:15px 0;
+	font-size:20px;
+}
+
+/*定义分类样式*/
+.category {
+	background-color:#F2F2F2;
+	padding:10px 20px 15px;	
+	margin-bottom:80px;
+}
+/*定义分类里面的每一行样式*/
+.category>ul {
+	margin:5px 0;	
+	padding:0;
+}
+/*定义每一行的第一个超链接的样式*/
+.category>ul>li:first-child {
+	font-size:20px;
+}
+/*定义❯的样式*/
+.category>ul>li:first-child:after {
+	content:"❯";
+	font:900 20px Arial,Helvetica,sans-serif;
+	margin-left:15px;
+}
+/*定义每一行里的每一个超链接的样式*/
+.category>ul>li {
+	margin:0 15px;	
+	display:inline;	
+}
+
+
+/*定义选项卡里的每一个超链接的样式*/
+.tab>a {
+	font-size:20px;	
+	padding:20px;
+	border-bottom:1px solid #D3D3D3;
+	color:#78b0f6;
+}
+/*鼠标悬停在选项卡时*/
+.tab>a:hover {
+	background-color:#e6e6fffc;	
+	border:1px solid #ddd;
+	border-radius:10px 10px 0 0;
+}
+
+.tab>a:first-child {
+	border:1px	solid #D3D3D3;
+	border-bottom:none;
+	border-radius:10px 10px 0 0;
+	color:#000;
+}

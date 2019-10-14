@@ -1,0 +1,128 @@
+@charset "utf-8";
+/*定义一个大容器*/
+.container {
+	margin:100px auto;
+	width:85%;
+}
+/*定义导航样式*/
+.container>nav {	
+	background-color:#F2F2F2;
+	padding:20px 50px;
+	margin-bottom:50px;
+}
+/*定义给导航里面所有的元素样式*/
+.container>nav * {
+	vertical-align:middle;
+}
+/*定义添加按钮图片的样式*/
+.container>nav>a>img {
+	height:40px;
+}
+/*定义添加按钮的样式*/
+#add {
+	cursor:pointer;	
+}
+/*定义栏目样式*/
+.container>nav>span>a {
+	font-size:24px;
+	border:1px solid #797979;
+	background-color:#FFF;
+	padding:10px;
+	margin:10px;
+	cursor:pointer;
+}
+/**/
+.container>nav>span>a:first-child , .container>nav>span>a:hover {
+	background-color:#d2d3d561;
+}
+
+
+/*定义侧栏样式*/
+aside {
+	float:left;
+	display:inline-block;
+	margin-right:50px;
+}
+/*添加子栏目按钮的样式*/
+#addChild {
+	display:none;	
+}
+/*定义每一个子栏目的样式*/
+aside>div>div:before {
+	content:"▶";
+}
+
+
+
+/*定义小容器样式*/
+.small-container {
+	border-left:1px solid #797979;
+	display:inline-block;
+	padding-left:50px;
+}
+
+/*定义基本信息表单部分的样式*/
+.small-container>form>fieldset {
+	border:none;
+	padding:0;
+}
+/*定义每个表单标签的样式*/
+.small-container>form>fieldset>div>label {
+	margin-right:10px;	
+}
+/*定义每个表单项的样式*/
+.small-container>form>fieldset>div>label:before {
+	content:"*";
+	color:red;
+}
+/*定义每一个表单项的外边距*/
+.small-container>form>fieldset>div {
+	margin-bottom:30px;
+}
+/*课程名称的样式*/
+#title {
+	width:300px;	
+}
+/*课程描述的样式*/
+#description {
+	width:300px;
+	height:150px;
+}
+/*所属系别的样式*/
+#depart {
+	width:150px;	
+}
+/*保存按钮和预览按钮的样式*/
+#save , #preview {
+	color:#FFF;
+	background-color:#169BD5;
+	border:1px solid #169BD5;
+	border-radius:5px;
+	width:100px;
+	height:30px;
+	margin-right:10px;
+}
+
+/*定义工具箱和可编辑区的样式*/
+#toolCase , #editor {
+	display:none;	
+}
+/*定义工具箱样式*/
+.small-container>form>div:nth-of-type(1) {
+	margin-bottom:50px;
+}
+/*定义工具按钮样式*/
+.small-container>form>div>button {
+	background-color:hsla(120,60%,70%,0);	
+	border:none;
+	cursor:pointer;
+}
+/*悬停在工具按钮时的样式*/
+.small-container>form>div>button:hover {
+	background-color:#87a1a121;
+}
+/*定义可编辑容器样式*/
+.small-container>form>div:nth-of-type(2) {
+	height:500px;
+}
+
