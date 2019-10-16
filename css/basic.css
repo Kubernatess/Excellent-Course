@@ -1,0 +1,27 @@
+@charset "utf-8";
+/*定义每个表单标签的样式*/
+form>div>label {
+	margin-right:10px;	
+}
+/*定义每个表单项的样式*/
+form>div>label:before {
+	content:"*";
+	color:red;
+}
+/*定义每一个表单项的外边距*/
+form>div {
+	margin-bottom:30px;
+}
+/*课程名称的样式*/
+#title {
+	width:300px;	
+}
+/*课程描述的样式*/
+#description {
+	width:300px;
+	height:150px;
+}
+/*所属系别的样式*/
+#depart {
+	width:150px;	
+}

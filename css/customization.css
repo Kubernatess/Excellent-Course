@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+/*定义整个容器的样式*/
+body>div {
+	margin:100px auto;
+	width:85%;
+}
+/*定义导航样式*/
+body>div>nav {	
+	background-color:#F2F2F2;
+	padding:20px 50px;
+	margin-bottom:50px;
+}
+/*定义给导航里面所有的元素样式*/
+body>div>nav * {
+	vertical-align:middle;
+}
+/*定义添加按钮的样式*/
+body>div>nav>button {
+	background-color:hsla(120,60%,70%,0);
+	border:none;
+	cursor:pointer;
+}
+/*定义添加按钮图片的样式*/
+body>div>nav>button>img {
+	height:40px;
+}
+/*定义栏目样式*/
+body>div>nav>a {
+	font-size:24px;
+	padding:10px;
+	margin:10px;
+	cursor:pointer;
+	background-color:white;
+	border:1px solid #000;
+}
+/*初始化第一个栏目的样式*/
+body>div>nav>a:hover {
+	background-color:#d2d3d561;
+}
+
+
+/*定义右键菜单样式*/
+div>div {
+	display: none;
+    position: absolute;
+	box-shadow:0px 8px 16px rgba(0,0,0,0.2);
+	z-index:1;
+	background-color:#f9f9f9;
+    width:100px;
+	padding:12px 16px;
+	cursor:pointer;
+}
+
+/*定义所有iframe的样式*/
+body>div>iframe {
+	width:100%;	
+	border:none;	
+}
+/*定义第一个iframe的样式*/
+body>div>iframe:nth-of-type(2) {
+	display:none;	
+}
