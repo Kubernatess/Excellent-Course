@@ -28,3 +28,21 @@ aside>div>p:nth-of-type(2) {
 	color:#999;
 	margin:0;
 }
+/*定义侧边栏样式*/
+aside {
+	position:absolute;
+	top:150px;
+	right:100px;	
+}
+/*定义'精品课程'旁边的装饰*/
+aside>span:empty {
+	background-color:#199ED8;
+	width:20px;
+	height:45px;
+	float:left;
+	margin:0 10px;
+}
+/*定义'精品课程'文本样式*/
+aside>span {
+	font-size:28px;	
+}

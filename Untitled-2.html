@@ -1,120 +1,100 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-<meta charset="utf-8">
-<title>无标题文档</title>
-<script>
-window.onload=function(){
-	var ul=document.getElementsByTagName('ul')[1];
-	var button=document.getElementsByTagName('button')[0];
-	var currentNode=null;
-	var menu=document.getElementById('contextmenu');
-	
-	button.onclick=function(){
-		var liNode=document.createElement('li');
-		var spanNode=document.createElement('span');
-		var signNode=document.createTextNode("▶");
-		var textNode=document.createTextNode("新增子栏目");
-		// 添加子栏目
-		spanNode.appendChild(signNode);
-		liNode.appendChild(spanNode);
-		liNode.appendChild(textNode);
-		ul.appendChild(liNode);	
-		// 并指向当前节点
-		currentNode=liNode;
-		// 添加右键事件
-		liNode.oncontextmenu=function(){
-			popMenu(this);
-		};
-		// 添加点击事件
-		liNode.onclick=function(){
-			handle(this);
-		};
-	};
-	
-	// 在栏目范围外,右键隐藏菜单
-    document.onclick = function(){
-		menu.style.display='none';
-    }
-	
-	function popMenu(column){
-		// 右键执行一次点击事件处理
-		handle(column);
-		//阻止默认行为
-		var ev = ev || event;
-		ev.preventDefault();
-		//记录当前的坐标(x轴和y轴)
-		var x = ev.clientX;
-		var y = ev.clientY;		
-		menu.style.display = 'block';//右键点击时显示菜单框
-		menu.style.left = x + 'px';
-		menu.style.top = y + 'px';
-	};
-	
-	function handle(node){
-		// 每次点击时把该节点指向当前节点
-		currentNode=node;
-		// 获取所有栏目节点
-		var li=ul.getElementsByTagName('li');
-		// 对其他栏目设置默认样式
-		for(var i=0;i<li.length;i++){
-			li[i].style.backgroundColor="#FFF";
-			// 添加索引值
-			li[i].index=i;
-		};
-		// 给当前栏目设置样式
-		node.style.backgroundColor="#d2d3d561";
-	};
-};
-</script>
+<title>Document</title>
 <style>
-ul li {
-	list-style-type: none;
-	backgroundColor:#d2d3d561;
+#model {
+    width:500px;
+    height:500px;
+    margin:5% auto;
+    background-color:#FFF;
+    border-radius:5px;
+	padding:20px 0;
 }
-#contextmenu {
-	position:absolute;
-    background-color:#f9f9f9;
-    width:150px;
-    box-shadow:0px 8px 16px rgba(0,0,0,0.2);
-	z-index:1;
-	padding:0;
-	display:none;
+#model>span:nth-of-type(1) {
+	margin-left:20px;	
+}
+#model>span:nth-of-type(2) {
+	float:right;
+	margin-right:20px;
+	color:#808080f5;
+	cursor:pointer;
+}
+#model>ul {
+	overflow-y:scroll;
+	height:400px;
+	border-bottom:1px solid #8080804f;
+	border-top:1px solid #8080804f;
+}
+#model>ul>li {
+	display:inline-block;
+	margin:25px;
+	text-align:center;
 }
 
-/*定义下拉内容的样式*/
-#contextmenu>li {
-    color:black;
-    padding:12px 16px;
+#model>ul>li>img {
+	display:block;	
 }
-/*定义下拉内容悬停时的样式*/
-#contextmenu>li:hover {
-	background-color: #f1f1f1
+#model>button:nth-of-type(1) {
+	margin:0 20px;	
+}
+#model>button {
+	border-radius:5px;
+	border:1px solid #199ED8;
+	background-color:#199ED8;
+	color:#FFF;	
+	width:80px;
+	height:30px;	
+}
+#outer {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:100;
+    background-repeat:no-repeat;
+    background-color:rgba(13,13,13,0.3);
+    display: none;
 }
 </style>
+<script>
+window.onload=function(){
+	document.getElementById("model").onblur=function(){
+		document.getElementById("outer").style.display="none"
+	}
+	document.getElementById("model").onfocus=function(){
+		document.getElementById("outer").style.display="block"
+	}
+	document.getElementById("show").onclick=function(){
+		document.getElementById("outer").style.display="block"
+	}
+};
+
+</script>
 </head>
-
 <body>
-<ul id="contextmenu">
-<li>添加栏目</li>
-<li>添加子栏目</li>
-<li>删除该栏目</li>
-<li>上移</li>
-<li>下移</li>
-</ul>
-
-<ul>
-<li><span>▶</span>添加子栏目</li>
-<li><span>▶</span>添加子栏目</li>
-<li><span>▶</span>添加子栏目</li>
-<li>
-	<ul>
-    	<li><span>▶</span>添加子栏目</li>
-		<li><span>▶</span>添加子栏目</li>
-		<li><span>▶</span>添加子栏目</li>
+<button id="show">弹出模态框</button>
+<div id="outer">
+	<div id="model">
+    <span>选择模板</span><span>×</span>
+    <ul>
+    <li><img src="image/image(2).png"><span>默认</span></li>
+    <li><img src="image/image(2).png"><span>蓝色天空</span></li>
+    <li><img src="image/image(2).png"><span>简约风格</span></li>
+    <li><img src="image/image(2).png"><span>黑绿之旅</span></li>
+    <li><img src="image/image(2).png"><span>简约至极</span></li>
+    <li><img src="image/image(2).png"><span>蓝色清新</span></li>
+    <li><img src="image/image(2).png"><span>黑色低调</span></li>
+    <li><img src="image/image(2).png"><span>荷塘月色</span></li>
+    <li><img src="image/image(2).png"><span>水乡墨雅</span></li>
+    <li><img src="image/image(2).png"><span>优雅世界</span></li>
+    <li><img src="image/image(2).png"><span>超级模板</span></li>
+    <li><img src="image/image(2).png"><span>Web之道</span></li>
     </ul>
-</li>
-</ul>
-<button type="button"><img src="image/add.png" title="添加子栏目"></button>
+    <button type="button">确认</button>
+    <button type="button">取消</button>
+    </div>
+</div>
 </body>
 </html>
