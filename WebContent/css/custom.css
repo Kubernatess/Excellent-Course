@@ -1,0 +1,78 @@
+@charset "utf-8";
+/*定义表单的样式*/
+form {
+	float:left;	
+}
+/*定义第一层无序列表的样式*/
+form>ul {
+	padding:0	
+}
+/*定义切换按钮的样式*/
+form>ul>li>span {
+	cursor:pointer;	
+}
+/*设置子栏目的样式*/
+form ul>li input {
+	border:none;
+	background-color:#FFF;	
+	cursor:default;
+}
+/*默认把子栏目隐藏掉*/
+form>ul>li>ul {
+	display:none;	
+}
+/*定义提交按钮的样式*/
+form>input:last-child {
+	display:none;	
+}
+/*添加子栏目按钮的样式*/
+form>button {
+	background-color:hsla(120,60%,70%,0);	
+	border:none;
+	cursor:pointer;
+}
+
+
+/*定义所有无序列表样式*/
+ul {
+	margin:0;	
+}
+/*定义所有列表的样式*/
+ul li {
+	list-style-type: none;
+	cursor:default;
+}
+
+
+/*右键菜单样式*/
+body>ul {
+	position:absolute;
+    background-color:#f9f9f9;
+    padding:0;	
+    box-shadow:0px 8px 16px rgba(0,0,0,0.2);
+	z-index:1;
+	display:none;
+}
+/*右键菜单内容的样式*/
+body>ul>li {
+    color:black;
+    padding:12px 20px;
+}
+/*右键菜单内容悬停时的样式*/
+body>ul>li:hover {
+	background-color: #f1f1f1
+}
+
+
+/*定义小容器的样式*/
+body>div {
+	display:inline-block;
+	padding-left:50px;
+	border-left:1px solid #797979;
+}
+
+/*定义iframe和指示文本的样式*/
+body>div>iframe {
+	width:900px;	
+	border:none;
+}
