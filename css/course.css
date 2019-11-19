@@ -1,0 +1,132 @@
+@charset "utf-8";
+/*定义容器的样式*/
+.container {
+	margin:0 auto;
+	width:1200px;	
+}
+
+
+/*定义封面部分的样式*/
+.container>.cover {
+	margin:70px 0 100px;
+}
+/*定义封面图片的样式*/
+.container>.cover>img {
+	float:left;
+	margin-right:30px;
+}
+/*定义课程名称的样式*/
+.container>.cover>p:nth-of-type(1) {
+	font-size:24px;	
+}
+/*定义课程描述的样式*/
+.container>.cover>p:nth-of-type(2) {
+	margin:50px 0;	
+}
+/*定义参与人数的样式*/
+.container>.cover>p:nth-of-type(3) {
+	margin-bottom:30px;	
+}
+/*定义立即参与按钮的样式*/
+.container>.cover>a {
+	background-color:#3C0;
+	color:#FFF;
+	text-decoration:none;
+	padding:15px 60px;
+	border-radius:5px;
+	font-size:18px;
+}
+
+
+/*定义课程详情部分的样式*/
+.container>.detail {
+	float:left;		
+	width:800px;
+}
+/*详情部分选项卡的样式*/
+.container>.detail>span {
+	font-size:20px;	
+	padding:10px;
+	margin-right:20px;
+}
+/*定义详细描述的样式*/
+.container>.detail>hr+p {
+	padding:25px;
+	background-color:#eee2ff75;	
+	margin:30px 0 50px;
+}
+/*详情部分第一个选项卡的样式*/
+.container>.detail>span:first-child {
+	border-bottom:3px solid #3C0;	
+	color:#3C0;
+}
+
+
+/*定义侧栏部分的样式*/
+.container>aside {
+	float:right;
+	width:200px;	
+}
+/*定义所属系别的样式*/
+.container>aside>.teach>p {
+	font-size:28px;
+}
+/*定义横线的样式*/
+.container>aside>.teach>hr {
+	margin-bottom:20px;	
+}
+/*定义授课老师和相关课程旁边的装饰*/
+.container>aside>.teach>span:empty , .container>aside>.related>span:empty {
+	background-color:#199ED8;
+	width:10px;
+	height:28px;
+	float:left;
+	margin-right:10px;
+}
+/*定义授课老师以及相关课程的文本样式*/
+.container>aside>.teach>span , .container>aside>.related>span {
+	font-size:20px;
+}
+/*定义教学团队部分的样式*/
+.container>aside>.teach>ul {
+	list-style-type:none;
+	padding:0;
+}
+/*定义无序列表下所有内容的样式*/
+.container>aside>.teach>ul>li * {
+	vertical-align:middle;
+}
+/*定义教师头像的样式*/
+.container>aside>.teach>ul>li>img {
+	margin:10px 10px 10px 0;	
+}
+
+
+/*定义相关课程的样式*/
+.container>aside>.related {
+	margin-top:70px;	
+}
+/*定义相关课程下无序列表的样式*/
+.container>aside>.related>ul {
+	list-style-type:none;
+	padding:0;
+}
+/*定义相关课程无序列表项的样式*/
+.container>aside>.related>ul>li {
+	margin:25px 0;
+}
+/*定义相关课程下图片的样式*/
+.container>aside>.related>ul>li>img {
+	width:200px;	
+}
+/*课程名称文本样式*/
+.container>aside>.related>ul>li>p:nth-of-type(1) {
+	font-size:18px;
+	margin:0;
+}
+/*系别的文本样式*/
+.container>aside>.related>ul>li>p:nth-of-type(2) {
+	color:#999;
+	font-size:16px;
+	margin:0;
+}

@@ -1,0 +1,91 @@
+@charset "utf-8";
+/*定义工具箱的样式*/
+body>form>ul {
+	list-style-type: none;
+	padding:0;
+}
+/*定义无序列表项的样式*/
+body>form>ul>li {
+	display:inline;
+}
+/*定义工具箱按钮的样式*/
+body>form>ul>li>button {
+	cursor:pointer;
+	background-color:hsla(120,60%,70%,0);	
+	border:none;
+	position: relative;
+}
+/*定义工具箱按钮图标的样式*/
+body>form>ul>li>button>img {
+	height:45px;	
+}
+/*定义文件上传表单的样式*/
+body>form>ul>li>button>input {
+	position: absolute;
+	opacity: 0;	
+	left: 0;
+	top: 0;
+	height:60px;
+	width:65px;
+}
+/*定义按钮悬停时的样式*/
+body>form>ul>li>button:hover , .dropbtn:hover {
+	background-color:#87a1a121;
+}
+
+
+/*定义字体下拉菜单的整体样式*/
+.dropdown {
+    display:inline-block;
+}
+/*定义字体下拉内容DIV样式*/
+.dropdown-content {
+    display:none;
+    position:absolute;
+    background-color:#f9f9f9;
+    width:150px;
+    box-shadow:0px 8px 16px rgba(0,0,0,0.2);
+	z-index:1;
+}
+/*定义字体下拉内容的样式*/
+.dropdown-content>button {
+    color:black;
+    padding:12px 16px;
+    text-decoration:none;
+    display:block;
+	background-color:hsla(120,60%,70%,0);
+	border:none;
+	width:100%;
+}
+/*定义字体下拉内容悬停时的样式*/
+.dropdown-content>button:hover {
+	background-color:#f1f1f1
+}
+/*字体下拉菜单悬停时再到下拉内容时的样式*/
+.dropdown:hover>.dropdown-content {
+    display:block;
+}
+
+
+/*定义可编辑容器样式*/
+body>form>div {
+	height:500px;
+}
+/*定义编辑器文字初始的样式*/
+body>form>div>span {
+	font-size:24px;	
+}
+
+
+
+/*保存按钮和预览按钮的样式*/
+#save , #preview {
+	color:#FFF;
+	background-color:#169BD5;
+	border:1px solid #169BD5;
+	border-radius:5px;
+	width:100px;
+	height:30px;
+	margin-right:10px;
+}
+
