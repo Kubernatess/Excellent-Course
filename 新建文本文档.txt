@@ -35,3 +35,8 @@ createElement、innerHTML
 初始化JS操作改用CSS
 
 初始化操作  click()
+
+只能打开一个customization页面
+
+//保存subDirectoryPath,供UploadServlet使用
+		pc.getSession().setAttribute("subDirectoryPath", subDirectoryPath);

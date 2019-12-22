@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2019-11-18 20:18:01
+Date: 2019-11-20 13:57:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,5 +38,6 @@ CREATE TABLE `column` (
 -- ----------------------------
 -- Records of column
 -- ----------------------------
-INSERT INTO `column` VALUES ('1845', 'C语言程序设计', '1', '1', '添加栏目');
+INSERT INTO `column` VALUES ('1845', 'C语言程序设计', '1', '1', '第一周：C语言概述，C语言变量、常量及表达式');
 INSERT INTO `column` VALUES ('1845', 'C语言程序设计', '1', '2', '第二周：C程序及流程控制');
+INSERT INTO `column` VALUES ('1845', 'C语言程序设计', '2', '1', '添加栏目');

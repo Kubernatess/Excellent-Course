@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -148,6 +149,44 @@ public class DatabaseAccess {
 		}
 	}
 	
+	
+	// 修改标题栏目名称
+	public static void modifyTab(Tab tab){
+		try {
+			con=JDBCUtil.getConnection();
+			String sql = "update tab set name=? where teacher_identity=? and course_name=? and tab_index=?";
+			ps=con.prepareStatement(sql);
+			ps.setString(1,tab.getName());
+			ps.setString(2,tab.getTeacherIdentity());
+			ps.setString(3,tab.getCourseName());
+			ps.setInt(4,tab.getTabIndex());
+			ps.executeUpdate();
+			JDBCUtil.close(rs,ps,con);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	// 修改标题栏目索引值
+	public static void modifyTabIndex(Tab tab,int index){
+		try {
+			con=JDBCUtil.getConnection();
+			String sql = "update tab set tab_index=? where teacher_identity=? and course_name=? and tab_index=?";
+			ps=con.prepareStatement(sql);
+			ps.setInt(1,index);
+			ps.setString(2,tab.getTeacherIdentity());
+			ps.setString(3,tab.getCourseName());
+			ps.setInt(4,tab.getTabIndex());
+			ps.executeUpdate();
+			JDBCUtil.close(rs,ps,con);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// 根据教师工号和课程名获得该课程的标题栏目
 	public static Map<Integer,String> selectTagNameByIdAndName(String teacherIdentity,String courseName){
 		Map<Integer,String> map=new HashMap<>();
@@ -208,6 +247,26 @@ public class DatabaseAccess {
 	}
 	
 	
+	// 修改栏目索引值
+	public static void modifyColumnIndex(Column column,int index){
+		try {
+			con=JDBCUtil.getConnection();
+			String sql = "update `column` set column_index=? where teacher_identity=? and course_name=? and tab_index=? and column_index=?";
+			ps=con.prepareStatement(sql);
+			ps.setInt(1,index);
+			ps.setString(2,column.getTeacherIdentity());
+			ps.setString(3,column.getCourseName());
+			ps.setInt(4,column.getTabIndex());
+			ps.setInt(5,column.getColumnIndex());
+			ps.executeUpdate();
+			JDBCUtil.close(rs,ps,con);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	// 添加一个栏目
 	public static void addSubColumn(Subcolumn subcolumn){
 		try {
@@ -250,6 +309,27 @@ public class DatabaseAccess {
 	}
 	
 	
+	// 修改子栏目索引值
+	public static void modifySubcolumnIndex(Subcolumn subcolumn,int index){
+		try {
+			con=JDBCUtil.getConnection();
+			String sql = "update subcolumn set subcolumn_index=? where teacher_identity=? and course_name=? and tab_index=? and column_index=? and subcolumn_index=?";
+			ps=con.prepareStatement(sql);
+			ps.setInt(1,index);
+			ps.setString(2,subcolumn.getTeacherIdentity());
+			ps.setString(3,subcolumn.getCourseName());
+			ps.setInt(4,subcolumn.getTabIndex());
+			ps.setInt(5,subcolumn.getColumnIndex());
+			ps.setInt(6,subcolumn.getSubcolumnIndex());
+			ps.executeUpdate();
+			JDBCUtil.close(rs,ps,con);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	// 根据教师工号和课程名以及选项卡标记来获得所有子栏目信息
 	public static List<Map<String,Object>> selectColumnAndSubcolumnByIdAndNameAndIndex(String teacherIdentity,String courseName,int tabIndex){
 		List<Map<String,Object>> list=new ArrayList<>();
@@ -263,7 +343,6 @@ public class DatabaseAccess {
 			rs=ps.executeQuery();
 			Map<String,Object> map=new LinkedHashMap<>();
 			Map<Integer,String> subMap=new LinkedHashMap<>();
-			int count=0;
 			while(rs.next()){
 				if(map.containsValue(rs.getInt("col.column_index"))){
 					subMap.put(rs.getInt("sub.subcolumn_index"),rs.getString("sub.subcolumn_name"));
@@ -286,6 +365,39 @@ public class DatabaseAccess {
 		return list;
 	}
 	
+	
+	// 根据教师工号和课程名来获得课程大纲所有栏目的信息
+	public static List<Map<String,Object>> selectTabAndColumnAndSubcolumnByIdAndName(String teacherIdentity,String courseName){
+		List<Map<String,Object>> list=new LinkedList<>();
+		try {			
+			con=JDBCUtil.getConnection();
+			String sql = "select tab.`name` , col.column_name from tab join `column` col on tab.teacher_identity=col.teacher_identity and tab.course_name=col.course_name and tab.tab_index=col.tab_index  where tab.teacher_identity=? and tab.course_name=? ORDER BY tab.tab_index , col.column_index";
+			ps=con.prepareStatement(sql);
+			ps.setString(1,teacherIdentity);
+			ps.setString(2,courseName);
+			rs=ps.executeQuery();
+			Map<String,Object> map=new LinkedHashMap<>();
+			List<String> columnList=new LinkedList<>();
+			while(rs.next()){
+				if(map.containsValue(rs.getString("tab.name"))){
+					columnList.add(rs.getString("col.column_name"));
+				}
+				// 如果是新的一级栏目
+				else{
+					map=new LinkedHashMap<>();
+					map.put("tabName",rs.getString("tab.name"));
+					columnList=new LinkedList<>();
+					columnList.add(rs.getString("col.column_name"));
+					map.put("columnList",columnList);
+					list.add(map);
+				}
+			}
+			JDBCUtil.close(rs,ps,con);	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 	// 更新编辑器内容
 	public static void updateContent(Subcolumn subcolumn){

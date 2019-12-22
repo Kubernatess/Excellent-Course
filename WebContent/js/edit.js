@@ -89,6 +89,11 @@ window.onload=function(){
 	// 附件形式下载
 	var attachment=document.getElementsByName('attachment')[0];
 	attachment.onchange=function(){
+		// 先把所有文件上次表单项的值设置为空
+		let files=document.querySelectorAll("input[type=\"file\"]");
+		for(let i=0;i<files.length;i++){
+			if(files[i]!=this)files[i].value="";
+		}
 		// 提取文件名
 		var index=this.value.lastIndexOf('\\');
 		var fileName=this.value.substr(index+1);
@@ -100,7 +105,13 @@ window.onload=function(){
 		var spannode=document.createElement("span");
 		var textnode2=document.createTextNode(fileName);
 		var hypernode=document.createElement("a");
-		hypernode.href="#";
+		
+		// 设置下载链接地址
+		var courseName=document.getElementById('courseName').value;
+		var tabIndex=document.getElementById('tabIndex').value;
+		var columnIndex=document.getElementById('columnIndex').value;
+		var subcolumnIndex=document.getElementById('subcolumnIndex').value;
+		hypernode.href="/Excellent-Course/DownloadServlet?courseName="+courseName+"&tabIndex="+tabIndex+"&columnIndex="+columnIndex+"&subcolumnIndex="+subcolumnIndex+"&fileName="+fileName+"";
 		var textnode3=document.createTextNode("下载地址");
 		// 追加节点
 		hypernode.appendChild(textnode3);
@@ -113,32 +124,68 @@ window.onload=function(){
 		var hidden=document.getElementsByName('content')[0];
 		hidden.value=editor.innerHTML;
 		
-		form.submit();
+		var form=document.getElementsByTagName('form')[0];
+		var fd = new FormData(form);
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.open("POST","../UploadServlet",true);
+		xmlhttp.send(fd);
+		
+		let xmlhttp2=new XMLHttpRequest();
+		xmlhttp2.onreadystatechange=function(){
+			if (this.readyState==4 && this.status==200)
+			{
+				alert(this.responseText);
+			}
+		}
+		xmlhttp2.open("POST","../ResponseServlet",true);
+		xmlhttp2.send(fd);
 	};
 	
 	
 	// 上传图片事件
 	var image=document.getElementsByName('image')[0];
 	image.onchange=function(){
-		var form=document.getElementsByTagName('form')[0];
+		// 先把所有文件上次表单项的值设置为空
+		let files=document.querySelectorAll("input[type=\"file\"]");
+		for(let i=0;i<files.length;i++){
+			if(files[i]!=this)files[i].value="";
+		}
+		
 		var editor=document.getElementById('editor');
 		var imagenode=document.createElement("img");
-		imagenode.src=""+this.value;
 		editor.appendChild(imagenode);
 		// 在提交表单之前,更新隐藏域的值
 		var hidden=document.getElementsByName('content')[0];
 		hidden.value=editor.innerHTML;
 		
-		form.submit();
+		var form=document.getElementsByTagName('form')[0];
+		var fd = new FormData(form);
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.open("POST","../UploadServlet",true);
+		xmlhttp.send(fd);
+		
+		let xmlhttp2=new XMLHttpRequest();
+		xmlhttp2.onreadystatechange=function(){
+			if (this.readyState==4 && this.status==200)
+			{
+				alert(decodeURIComponent(this.responseText))
+				imagenode.src=""+decodeURIComponent(this.responseText);
+			}
+		}
+		xmlhttp2.open("POST","../ResponseServlet",true);
+		xmlhttp2.send(fd);
 	};
 	
 	
 	// 上传视频事件
 	var video=document.getElementsByName('video')[0];
 	video.onchange=function(){
+		// 先把所有文件上次表单项的值设置为空
+		let files=document.querySelectorAll("input[type=\"file\"]");
+		for(let i=0;i<files.length;i++){
+			if(files[i]!=this)files[i].value="";
+		}
 		// 提取文件名
-		var index=this.value.lastIndexOf('\\');
-		var fileName=this.value.substr(index+1);
 		var form=document.getElementsByTagName('form')[0];
 		var editor=document.getElementById('editor');
 		var videoNode=document.createElement("video");
@@ -146,10 +193,8 @@ window.onload=function(){
 		videoNode.height="240";
 		videoNode.controls=true;
 		var sourceNode1=document.createElement("source");
-		sourceNode1.src=""+fileName;
 		sourceNode1.type="video/mp4";
 		var sourceNode2=document.createElement("source");
-		sourceNode2.src=""+fileName;
 		sourceNode2.type="video/ogg";
 		videoNode.appendChild(sourceNode1);
 		videoNode.appendChild(sourceNode2);
@@ -158,13 +203,39 @@ window.onload=function(){
 		var hidden=document.getElementsByName('content')[0];
 		hidden.value=editor.innerHTML;
 		
-		form.submit();
+		var form=document.getElementsByTagName('form')[0];
+		var fd = new FormData(form);
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.open("POST","../UploadServlet",true);
+		xmlhttp.send(fd);
+		
+		let xmlhttp2=new XMLHttpRequest();
+		xmlhttp2.onreadystatechange=function(){
+			if (this.readyState==4 && this.status==200)
+			{
+				alert(decodeURIComponent(this.responseText))
+				sourceNode1.src=""+decodeURIComponent(this.responseText);
+				sourceNode2.src=""+decodeURIComponent(this.responseText);
+			}
+		}
+		xmlhttp2.open("POST","../ResponseServlet",true);
+		xmlhttp2.send(fd);
 	};
 	
 	
 	// 保存按钮事件
 	var btnSave=document.getElementById('save');
 	btnSave.onclick=function(){
+		var form=document.getElementsByTagName('form')[0];
+		var hidden=document.getElementsByName('content')[0]
+		var editor=document.getElementById('editor');
+		hidden.value=editor.innerHTML;
+		form.submit();
+	};
+	
+	// 保存预览事件
+	var hyperlinkPreview=document.getElementById('preview');
+	hyperlinkPreview.onclick=function(){
 		var form=document.getElementsByTagName('form')[0];
 		var hidden=document.getElementsByName('content')[0]
 		var editor=document.getElementById('editor');

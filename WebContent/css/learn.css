@@ -1,0 +1,49 @@
+@charset "utf-8";
+/*定义侧栏的样式*/
+aside {
+	float:left;	
+	max-width:200px;
+}
+/*定义第一层无序列表的样式*/
+aside>ul {
+	padding:0;
+}
+/*定义切换按钮的样式*/
+aside>ul>li>span {
+	cursor:pointer;	
+}
+/*默认把子栏目隐藏掉*/
+aside>ul>li>ul {
+	display:none;	
+}
+/*定义所有超链接的样式*/
+aside>ul>li>ul>li>a {
+    text-decoration:none;
+    color:#333;
+}
+
+
+/*定义所有无序列表样式*/
+ul {
+	margin:0;	
+}
+/*定义所有列表的样式*/
+ul li {
+	list-style-type:none;
+	cursor:default;
+}
+
+
+/*定义小容器的样式*/
+body>div {
+	display:inline-block;
+    padding-left:50px;
+    margin-left:30px;
+	border-left:1px solid #797979;
+}
+
+/*定义iframe和指示文本的样式*/
+body>div>iframe {
+	width:900px;	
+	border:none;
+}

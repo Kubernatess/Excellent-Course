@@ -109,18 +109,110 @@ public class CustomServlet extends HttpServlet {
         }
     	else if(operation.equals("moveup")){
     		if(request.getParameter("subcolumnIndex").equals("")){
-    			
+    			int previousIndex=columnIndex-1;
+    			Column column=new Column();
+                column.setTeacherIdentity(teacherIdentity);
+                column.setCourseName(courseName);
+                column.setTabIndex(tabIndex);
+                
+                column.setColumnIndex(columnIndex);
+    			DatabaseAccess.modifyColumnIndex(column,1000);
+    			String currentPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+columnIndex;
+                File currentFile=new File(currentPath);
+                String tempPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+1000;
+                File tempFile=new File(tempPath);
+                currentFile.renameTo(tempFile);
+    			// 修改上一个元素的索引值
+    			column.setColumnIndex(previousIndex);
+    			DatabaseAccess.modifyColumnIndex(column,columnIndex);
+    			String previousPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+previousIndex;
+                File previousFile=new File(previousPath);
+                previousFile.renameTo(currentFile);
+    			// 修改当前元素的索引值
+    			column.setColumnIndex(1000);
+    			DatabaseAccess.modifyColumnIndex(column,previousIndex);
+    			tempFile.renameTo(previousFile);
     		}
     		else{
-    			
+    			int subcolumnIndex=Integer.parseInt(request.getParameter("subcolumnIndex"));
+    			int previousIndex=subcolumnIndex-1;
+    			Subcolumn subcolumn=new Subcolumn();
+            	subcolumn.setTeacherIdentity(teacherIdentity);
+            	subcolumn.setCourseName(courseName);
+            	subcolumn.setTabIndex(tabIndex);
+            	subcolumn.setColumnIndex(columnIndex);
+            	
+            	subcolumn.setSubcolumnIndex(subcolumnIndex);
+            	DatabaseAccess.modifySubcolumnIndex(subcolumn,1000);
+            	String currentPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+columnIndex+File.separator+subcolumnIndex;
+                File currentFile=new File(currentPath);
+                String tempPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+columnIndex+File.separator+1000;
+                File tempFile=new File(tempPath);
+                currentFile.renameTo(tempFile);
+            	// 修改上一个元素的索引值
+            	subcolumn.setSubcolumnIndex(previousIndex);
+            	DatabaseAccess.modifySubcolumnIndex(subcolumn,subcolumnIndex);
+            	String previousPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+columnIndex+File.separator+previousIndex;
+                File previousFile=new File(previousPath);
+                previousFile.renameTo(currentFile);
+            	// 修改当前元素的索引值
+            	subcolumn.setSubcolumnIndex(1000);
+            	DatabaseAccess.modifySubcolumnIndex(subcolumn,previousIndex);
+            	tempFile.renameTo(previousFile);
     		}
     	}
     	else if(operation.equals("movedown")){
     		if(request.getParameter("subcolumnIndex").equals("")){
-    			
+    			int nextIndex=columnIndex+1;
+    			Column column=new Column();
+                column.setTeacherIdentity(teacherIdentity);
+                column.setCourseName(courseName);
+                column.setTabIndex(tabIndex);
+                
+                column.setColumnIndex(columnIndex);
+    			DatabaseAccess.modifyColumnIndex(column,1000);
+    			String currentPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+columnIndex;
+                File currentFile=new File(currentPath);
+                String tempPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+1000;
+                File tempFile=new File(tempPath);
+                currentFile.renameTo(tempFile);
+    			// 修改下一个元素的索引值
+    			column.setColumnIndex(nextIndex);
+    			DatabaseAccess.modifyColumnIndex(column,columnIndex);
+    			String nextPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+nextIndex;
+                File nextFile=new File(nextPath);
+                nextFile.renameTo(currentFile);
+    			// 修改当前元素的索引值
+    			column.setColumnIndex(1000);
+    			DatabaseAccess.modifyColumnIndex(column,nextIndex);
+    			tempFile.renameTo(nextFile);
     		}
     		else{
-    			
+    			int subcolumnIndex=Integer.parseInt(request.getParameter("subcolumnIndex"));
+    			int nextIndex=subcolumnIndex-1;
+    			Subcolumn subcolumn=new Subcolumn();
+            	subcolumn.setTeacherIdentity(teacherIdentity);
+            	subcolumn.setCourseName(courseName);
+            	subcolumn.setTabIndex(tabIndex);
+            	subcolumn.setColumnIndex(columnIndex);
+            	
+            	subcolumn.setSubcolumnIndex(subcolumnIndex);
+            	DatabaseAccess.modifySubcolumnIndex(subcolumn,1000);
+            	String currentPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+columnIndex+File.separator+subcolumnIndex;
+                File currentFile=new File(currentPath);
+                String tempPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+columnIndex+File.separator+1000;
+                File tempFile=new File(tempPath);
+                currentFile.renameTo(tempFile);
+            	// 修改下一个元素的索引值
+            	subcolumn.setSubcolumnIndex(nextIndex);
+            	DatabaseAccess.modifySubcolumnIndex(subcolumn,subcolumnIndex);
+            	String nextPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+columnIndex+File.separator+nextIndex;
+                File nextFile=new File(nextPath);
+                nextFile.renameTo(currentFile);
+            	// 修改当前元素的索引值
+            	subcolumn.setSubcolumnIndex(1000);
+            	DatabaseAccess.modifySubcolumnIndex(subcolumn,nextIndex);
+            	tempFile.renameTo(nextFile);
     		}
     	}
         

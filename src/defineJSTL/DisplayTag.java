@@ -2,21 +2,23 @@ package defineJSTL;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import bean.Subcolumn;
 import db.DatabaseAccess;
 
-public class EditTag extends SimpleTagSupport {
+public class DisplayTag extends SimpleTagSupport {
+	private String teacherIdentity;
 	private String courseName;
 	private int tabIndex;
 	private int columnIndex;
 	private int subcolumnIndex;
 	
+	public void setTeacherIdentity(String teacherIdentity) {
+		this.teacherIdentity = teacherIdentity;
+	}
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
@@ -31,9 +33,6 @@ public class EditTag extends SimpleTagSupport {
 	}
 	
 	public void doTag() throws JspException, IOException {
-		PageContext pc=(PageContext) getJspContext();
-		HttpSession session=pc.getSession();
-		String teacherIdentity=(String) session.getAttribute("identity");
 		Subcolumn subcolumn=new Subcolumn();
 		subcolumn.setTeacherIdentity(teacherIdentity);
 		subcolumn.setCourseName(courseName);
@@ -42,12 +41,7 @@ public class EditTag extends SimpleTagSupport {
 		subcolumn.setSubcolumnIndex(subcolumnIndex);
 		String content=DatabaseAccess.getContent(subcolumn);
 		JspWriter out = getJspContext().getOut();
-		if(content==null||content.equals("")){
-			out.println("<span>在此处编辑</span>");
-		}
-		else{
-			out.println(content);
-		}
+		out.println(content);
+
 	}
-	
 }

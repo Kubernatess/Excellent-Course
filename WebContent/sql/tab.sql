@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2019-11-18 20:18:26
+Date: 2019-11-20 13:57:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,9 +30,10 @@ CREATE TABLE `tab` (
   KEY `tab_ibfk_1` (`teacher_identity`),
   CONSTRAINT `tab_ibfk_1` FOREIGN KEY (`teacher_identity`) REFERENCES `user` (`identity`) ON UPDATE CASCADE,
   CONSTRAINT `tab_ibfk_2` FOREIGN KEY (`course_name`) REFERENCES `course` (`name`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tab
 -- ----------------------------
 INSERT INTO `tab` VALUES ('1845', 'C语言程序设计', '1', '课件');
+INSERT INTO `tab` VALUES ('1845', 'C语言程序设计', '2', '测验与作业');

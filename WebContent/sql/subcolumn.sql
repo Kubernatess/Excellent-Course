@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2019-11-18 20:18:20
+Date: 2019-11-20 13:57:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -41,6 +41,7 @@ CREATE TABLE `subcolumn` (
 -- ----------------------------
 -- Records of subcolumn
 -- ----------------------------
-INSERT INTO `subcolumn` VALUES ('1845', 'C语言程序设计', '1', '1', '1', '添加子栏目', null);
+INSERT INTO `subcolumn` VALUES ('1845', 'C语言程序设计', '1', '1', '1', '第1讲 C语言概览  ', null);
 INSERT INTO `subcolumn` VALUES ('1845', 'C语言程序设计', '1', '1', '2', '第2讲 C语言上机环境  ', '\r\n\r\n<span>请在此处编辑</span>\r\n\r\n<span style=\"font-size: 20px; font-style: normal; color: black; font-weight: normal;\">在此处编辑</span><span style=\"font-size: 24px; font-style: normal; color: black; font-weight: normal;\">在此处编辑fs你好啊</span><span style=\"color: rgb(255, 128, 192); font-style: italic; font-weight: 700;\">编辑</span><span style=\"font-size: 24px; font-style: normal; color: black; font-weight: normal;\">在此处编辑</span><span style=\"font-size: 24px; font-style: normal; color: black; font-weight: bold;\">在此处编辑</span><span style=\"font-size: 24px; font-style: italic; color: black; font-weight: bold;\">在此处编辑</span><span style=\"font-size: 24px; font-style: italic; color: rgb(255, 128, 192); font-weight: bold;\">在此处编辑编辑</span>\r\n\r\n');
-INSERT INTO `subcolumn` VALUES ('1845', 'C语言程序设计', '1', '2', '1', '添加子栏目', '\r\n<span>在此处编辑</span>\r\n\r\n<span style=\"font-size: 24px; font-style: normal; color: black; font-weight: normal;\">在此处编辑</span><span style=\"font-size: 24px; font-style: normal; color: black; font-weight: bold;\">在此处编辑</span><span style=\"font-size: 24px; font-style: normal; color: rgb(0, 128, 255); font-weight: bold;\">在此处编辑</span><span style=\"font-size: 28px; font-style: normal; color: rgb(0, 128, 255); font-weight: bold;\">在此处编辑</span><span style=\"font-size: 36px; font-style: normal; color: rgb(0, 128, 255); font-weight: bold;\">在此处编辑</span><span style=\"font-size: 24px; font-style: normal; color: black; font-weight: normal;\">在此处编辑</span>');
+INSERT INTO `subcolumn` VALUES ('1845', 'C语言程序设计', '2', '1', '1', '添加子栏目', '\r\n\r\n\r\n\r\n\r\n\r\n<span>在此处编辑</span><img src=\"C:\\fakepath\\psb.jpg\">');
+INSERT INTO `subcolumn` VALUES ('1845', 'C语言程序设计', '1', '2', '1', '添加子栏目', '\r\n\r\n<span>在此处编辑</span>\r\n\r\n<span style=\"font-size: 24px; font-style: normal; color: black; font-weight: normal;\">在此处编辑</span><span style=\"font-size: 24px; font-style: normal; color: black; font-weight: bold;\">在此处编辑</span><span style=\"font-size: 24px; font-style: normal; color: rgb(0, 128, 255); font-weight: bold;\">在此处编辑</span><span style=\"font-size: 28px; font-style: normal; color: rgb(0, 128, 255); font-weight: bold;\">在此处编辑</span><span style=\"font-size: 36px; font-style: normal; color: rgb(0, 128, 255); font-weight: bold;\">在此处编辑</span><span style=\"font-size: 24px; font-style: normal; color: black; font-weight: normal;\">在此处编辑</span>\r\n\r\n<img src=\"C:\\fakepath\\14629891299474418458.jpg\">');

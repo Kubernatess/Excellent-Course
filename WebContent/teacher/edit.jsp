@@ -51,13 +51,17 @@
 <div contentEditable="true" id="editor">
 <define:edit courseName="${param.courseName}" tabIndex="${param.tabIndex}" columnIndex="${param.columnIndex}" subcolumnIndex="${param.subcolumnIndex}" />
 </div>
-<input type="hidden" name="courseName" value="${param.courseName}">
-<input type="hidden" name="tabIndex" value="${param.tabIndex}">
-<input type="hidden" name="columnIndex" value="${param.columnIndex}">
-<input type="hidden" name="subcolumnIndex" value="${param.subcolumnIndex}">
+<c:set var="courseName" scope="session" value="${param.courseName}"/> 
+<c:set var="tabIndex" scope="session" value="${param.tabIndex}"/> 
+<c:set var="columnIndex" scope="session" value="${param.columnIndex}"/> 
+<c:set var="subcolumnIndex" scope="session" value="${param.subcolumnIndex}"/> 
+<input type="hidden" id="courseName" value="${param.courseName}">
+<input type="hidden" id="tabIndex" value="${param.tabIndex}">
+<input type="hidden" id="columnIndex" value="${param.columnIndex}">
+<input type="hidden" id="subcolumnIndex" value="${param.subcolumnIndex}">
 <input type="hidden" name="content">
 <input type="button" value="保存" id="save" />
-<input type="button" value="保存并预览" id="preview" />
+<a href="../learning.jsp?teacherIdentity=${sessionScope.identity}&courseName=${param.courseName}" target="_blank" id="preview">保存并预览</a>
 
 
 </form>

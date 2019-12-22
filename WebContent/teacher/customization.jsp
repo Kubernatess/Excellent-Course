@@ -45,6 +45,7 @@
 </c:choose>
 <input type="hidden" value="${param.courseName}" name="courseName">
 <input type="hidden" name="tabIndex">
+<input type="hidden" name="operation">
 <input type="submit">
 </form>
 
