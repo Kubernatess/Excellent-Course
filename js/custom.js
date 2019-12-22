@@ -14,6 +14,11 @@ window.onload=function(){
 		// 禁用所有输入表单
 		input.readOnly=true;
 	}
+	
+	// 刚加载页面,聚焦第一个子栏目
+	var firstHyperlink=document.querySelector("body>form>ul>li:first-child>ul>li:first-child>a");
+	var iframe=document.querySelector("body>div>iframe");
+	iframe.src=""+firstHyperlink.href;
 
 
 	// 在栏目范围外,右键隐藏菜单

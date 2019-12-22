@@ -100,7 +100,7 @@ window.onload=function(){
 		var spannode=document.createElement("span");
 		var textnode2=document.createTextNode(fileName);
 		var hypernode=document.createElement("a");
-		hypernode.href="#";
+		hypernode.href="${Path}/DownloadServlet?filename="+fileName+"";
 		var textnode3=document.createTextNode("下载地址");
 		// 追加节点
 		hypernode.appendChild(textnode3);
@@ -112,24 +112,30 @@ window.onload=function(){
 		// 在提交表单之前,更新隐藏域的值
 		var hidden=document.getElementsByName('content')[0];
 		hidden.value=editor.innerHTML;
-		
-		form.submit();
 	};
 	
 	
 	// 上传图片事件
 	var image=document.getElementsByName('image')[0];
 	image.onchange=function(){
-		var form=document.getElementsByTagName('form')[0];
 		var editor=document.getElementById('editor');
 		var imagenode=document.createElement("img");
-		imagenode.src=""+this.value;
 		editor.appendChild(imagenode);
 		// 在提交表单之前,更新隐藏域的值
 		var hidden=document.getElementsByName('content')[0];
 		hidden.value=editor.innerHTML;
 		
-		form.submit();
+		var form=document.getElementsByTagName('form')[0];
+		var fd = new FormData(form);
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function(){
+			if (this.readyState==4 && this.status==200)
+			{
+				imagenode.src=""+decodeURIComponent(this.responseText);
+			}
+		}
+		xmlhttp.open("POST","../UploadServlet",true);
+		xmlhttp.send(fd);		
 	};
 	
 	
@@ -139,17 +145,14 @@ window.onload=function(){
 		// 提取文件名
 		var index=this.value.lastIndexOf('\\');
 		var fileName=this.value.substr(index+1);
-		var form=document.getElementsByTagName('form')[0];
 		var editor=document.getElementById('editor');
 		var videoNode=document.createElement("video");
 		videoNode.width="320";
 		videoNode.height="240";
 		videoNode.controls=true;
 		var sourceNode1=document.createElement("source");
-		sourceNode1.src=""+fileName;
 		sourceNode1.type="video/mp4";
 		var sourceNode2=document.createElement("source");
-		sourceNode2.src=""+fileName;
 		sourceNode2.type="video/ogg";
 		videoNode.appendChild(sourceNode1);
 		videoNode.appendChild(sourceNode2);
@@ -158,7 +161,18 @@ window.onload=function(){
 		var hidden=document.getElementsByName('content')[0];
 		hidden.value=editor.innerHTML;
 		
-		form.submit();
+		var form=document.getElementsByTagName('form')[0];
+		var fd = new FormData(form);
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function(){
+			if (this.readyState==4 && this.status==200)
+			{
+				sourceNode1.src=""+decodeURIComponent(this.responseText);
+				sourceNode2.src=""+decodeURIComponent(this.responseText);
+			}
+		}
+		xmlhttp.open("POST","../UploadServlet",true);
+		xmlhttp.send(fd);
 	};
 	
 	
@@ -172,6 +186,15 @@ window.onload=function(){
 		form.submit();
 	};
 
+	// 保存预览事件
+	var hyperlinkPreview=document.getElementById('preview');
+	hyperlinkPreview.onclick=function(){
+		var form=document.getElementsByTagName('form')[0];
+		var hidden=document.getElementsByName('content')[0]
+		var editor=document.getElementById('editor');
+		hidden.value=editor.innerHTML;
+		form.submit();
+	};
 
 };
 

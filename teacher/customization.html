@@ -23,12 +23,13 @@
 <!--标题栏目部分-->
 <form>
 <a href="basic.html" target="iframe"><input type="text" value="基本信息"></a>
-<!--
-<a href="custom.html" target="iframe"><input type="text" value="新建标题" name="tag"></a>
-<a href="custom.html" target="iframe"><input type="text" value="新建标题" name="tag"></a>
--->
+
+<a href="custom.html" target="iframe"><input type="text" value="新建标题" name="tag" tabindex="1"></a>
+<a href="custom.html" target="iframe"><input type="text" value="新建标题" name="tag" tabindex="2"></a>
+
 <button type="button"><img src="../image/add.png" title="添加栏目"></button>
 <input type="hidden" name="tabIndex">
+<input type="hidden" name="operation">
 <input type="submit">
 </form>
 

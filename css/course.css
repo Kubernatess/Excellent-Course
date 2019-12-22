@@ -21,7 +21,10 @@
 }
 /*定义课程描述的样式*/
 .container>.cover>p:nth-of-type(2) {
-	margin:50px 0;	
+	margin:60px 0;	
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
 }
 /*定义参与人数的样式*/
 .container>.cover>p:nth-of-type(3) {
@@ -35,6 +38,10 @@
 	padding:15px 60px;
 	border-radius:5px;
 	font-size:18px;
+}
+/*定义封面图片的样式*/
+.container>.cover>img {
+	height:260px;
 }
 
 
@@ -53,7 +60,11 @@
 .container>.detail>hr+p {
 	padding:25px;
 	background-color:#eee2ff75;	
-	margin:30px 0 50px;
+	margin-top:30px;
+}
+/*定义标题栏目的样式*/
+.container>.detail>h3 {
+	margin-top:50px;
 }
 /*详情部分第一个选项卡的样式*/
 .container>.detail>span:first-child {

@@ -79,7 +79,7 @@ body>form>div>span {
 
 
 /*保存按钮和预览按钮的样式*/
-#save , #preview {
+#save {
 	color:#FFF;
 	background-color:#169BD5;
 	border:1px solid #169BD5;
@@ -87,5 +87,15 @@ body>form>div>span {
 	width:100px;
 	height:30px;
 	margin-right:10px;
+}
+/*保存预览的样式*/
+#preview {
+	color:#FFF;
+	background-color:#169BD5;
+	border:1px solid #169BD5;
+	border-radius:5px;
+	padding:5px 20px;
+	font-size:13.5px;
+	text-decoration:none;
 }
 

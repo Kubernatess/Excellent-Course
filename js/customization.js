@@ -1,19 +1,16 @@
 window.onload=function(){
 	
 	// 加载页面的时候,进行一些初始化操作
-	var form=document.getElementsByTagName('form')[0];
-	var hyperlink=form.getElementsByTagName('a');	
-		
-		
-	for(var i=0;i<hyperlink.length;i++){
+	var arrHyperlink=document.querySelectorAll("form>a");	
+	for(var i=0;i<arrHyperlink.length;i++){
 		// 刚加载页面,禁用掉所有输入框
-		hyperlink[i].children[0].disabled=true;
+		arrHyperlink[i].children[0].disabled=true;
 				
-		hyperlink[i].addEventListener("click",clickHyperlink);
+		arrHyperlink[i].addEventListener("click",changeStyle);
 		
 		// 跳过基本信息这一栏
 		if(i!=0){
-			hyperlink[i].addEventListener("contextmenu",popmenu);
+			arrHyperlink[i].addEventListener("contextmenu",popmenu);
 		}
 	}
 	
@@ -26,25 +23,28 @@ window.onload=function(){
 	
 	
 	// 添加标题栏目方法
-	var button=form.getElementsByTagName('button')[0];	
+	var button=document.querySelector("form>button");	
 	button.onclick=function(){
 		var form=this.parentNode;
-		var node=form.getElementsByTagName('a');
-		var len=node.length;
-		node=node[len-1];
-		node=node.cloneNode(true);
-		node.children[0].value="新建标题";
-		node.children[0].name="tag";
-		form.insertBefore(node,this);
+		var arrHyperlink=form.getElementsByTagName("a");
+		var lastHyperlink=arrHyperlink[arrHyperlink.length-1]
+		var newHyperlink=lastHyperlink.cloneNode(true);
+		var input=newHyperlink.children[0];
+		input.value="新建标题";
+		input.name="tag";
+		form.insertBefore(newHyperlink,this);
 		//自动执行重命名事件
-		clickHyperlink.call(node)
-		renameTag.call(node);
+		changeStyle.call(newHyperlink)
+		renameTag.call(newHyperlink);
 		// 设置隐藏域的值
 		var tabIndex=document.getElementsByName('tabIndex')[0];
-		tabIndex.value=len;
+		tabIndex.value=lastHyperlink.children[0].tabIndex+1;
 		// 修改iframe页面
 		var iframe=document.getElementsByName('iframe')[0];
 		iframe.src="custom.html";
+		// 设置隐藏域的值
+		var operation=document.getElementsByName('operation')[0];
+		operation.value="add";
 	};
 	
 };
@@ -52,11 +52,11 @@ window.onload=function(){
 
 
 /*点击标题栏目的事件处理*/
-function clickHyperlink(){
+function changeStyle(){
 	// 对其他栏目设置默认样式
-	var a=this.parentNode.getElementsByTagName('a');
-	for(var i=0;i<a.length;i++){
-		a[i].children[0].style.backgroundColor="#FFF";	
+	var arrHyperlink=document.querySelectorAll("form>a");
+	for(var i=0;i<arrHyperlink.length;i++){
+		arrHyperlink[i].children[0].style.backgroundColor="#FFF";	
 	};
 	// 给当前栏目设置样式
 	this.children[0].style.backgroundColor="#d2d3d561";
@@ -65,7 +65,7 @@ function clickHyperlink(){
 
 /*右键弹出菜单事件*/
 function popmenu(){
-	clickHyperlink.call(this);
+	changeStyle.call(this);
 	//阻止默认行为
 	var ev = ev || event;
 	ev.preventDefault();
@@ -74,36 +74,58 @@ function popmenu(){
 	var y = ev.clientY;
 	//右键点击时显示菜单框
 	var menu=document.getElementsByTagName('ul')[0];
-	menu.style.display = 'block';
-	menu.style.left = x + 'px';
-	menu.style.top = y + 'px';
+	menu.style.display='block';
+	menu.style.left=x+'px';
+	menu.style.top=y+'px';
 	
 	
 	var rename=menu.children[0];
+	var leftShift=menu.children[1];
+	var rightShift=menu.children[2];
 	var remove=menu.children[3];
 	
-	// 重命名事件
 	rename.addEventListener("click",renameTag.bind(this));
-	
-	// 设置删除栏目事件处理
+	leftShift.addEventListener("click",moveTag.bind(this,"leftshift"));
+	rightShift.addEventListener("click",moveTag.bind(this,"rightshift"));
 	remove.addEventListener("click",removeTag.bind(this));
+	
+	
+	if(this.previousElementSibling.children[0].tabIndex==0){
+		leftShift.style.display="none";
+	}
+	else{
+		leftShift.style.display="block";
+	}
+	
+	if(this.nextElementSibling.tagName!='A'){
+		rightShift.style.display="none";
+	}
+	else{
+		rightShift.style.display="block";
+	}
 }
 
 
 // 点击重命名事件
 function renameTag(){
 	// 先禁用其他标题栏目所有点击事件和右键菜单事件
-	var hyperlink=this.parentNode.getElementsByTagName('a');
-	for(var i=0;i<hyperlink.length;i++){
-		hyperlink[i].removeAttribute("href");
-		hyperlink[i].removeEventListener("click",clickHyperlink);
-		hyperlink[i].removeEventListener("contextmenu",popmenu);
+	var arrHyperlink=this.parentNode.getElementsByTagName('a');
+	for(var i=0;i<arrHyperlink.length;i++){
+		arrHyperlink[i].removeAttribute("href");
+		arrHyperlink[i].removeEventListener("click",changeStyle);
+		arrHyperlink[i].removeEventListener("contextmenu",popmenu);
 	}
 	// 禁用添加按钮
 	var button=this.parentNode.getElementsByTagName('button')[0];
 	button.disabled=true;	
-	// 禁用input表单
+	// 启用input表单
 	this.children[0].disabled=false;
+	// 设置隐藏域的值
+	var operation=document.getElementsByName('operation')[0];
+	operation.value="rename";
+	
+	var tabIndex=document.getElementsByName('tabIndex')[0];	
+	tabIndex.value=this.children[0].tabIndex;
 }
 
 
@@ -111,5 +133,20 @@ function renameTag(){
 function removeTag(){
 	var form=document.getElementsByTagName('form')[0];	
 	form.removeChild(this);
+	form.submit();
+}
+
+
+// 标题栏目的左移和右移
+function moveTag(move){
+	
+	var tabIndex=document.getElementsByName('tabIndex')[0];	
+	tabIndex.value=this.children[0].tabIndex;
+	
+	var operation=document.getElementsByName('operation')[0];
+	operation.value=move;
+
+	// 提交表单
+	var form=this.parentNode;
 	form.submit();
 }
