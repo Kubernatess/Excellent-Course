@@ -13,30 +13,18 @@
 </head>
 
 <body>
+<!--给登陆用户赋予通行证-->
+<c:if test="${ empty sessionScope.status}">
+	<script>window.location.href="login.jsp";</script>
+</c:if>
+
 <!-- 导航栏部分 -->
-<nav>
-<img src="image/logo.png">
-<span>广州大学华软软件学院</span>
-<!--
-<a href="login.html" target="_blank"><img src="image/user-empty.png"> 登陆</a>
--->
-<div class="dropdown">
-<a href="#" class="dropbtn" target="_blank"><img src="image/login.png"> <span>Twitter</span></a>
-<div class="dropdown-content">
-	<a href="#">添加课程</a>
-    <a href="#">课程管理</a>
-	<a href="#">用户设置</a>
-	<a href="#">学习记录</a>
-	<a href="#">消息</a>
-	<a href="#">退出</a>
-</div>
-</div>
-
-</nav>
-
+<jsp:include page="nav.jsp"/>
 
 <div class="container">
-
+<input type="hidden" value="${param.teacherIdentity}" name="teacherIdentity" form="review">
+<input type="hidden" value="${param.courseName}" name="courseName" form="review">
+<input type="hidden" value="${sessionScope.identity}" name="identity" form="review">
 <define:course teacherIdentity="${param.teacherIdentity}" courseName="${param.courseName}" />
 
 <!--定义相关课程部分-->

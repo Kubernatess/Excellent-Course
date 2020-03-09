@@ -24,7 +24,7 @@ public class LearningTag extends SimpleTagSupport {
 	
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
-		Map<Integer,String> map=DatabaseAccess.selectTagNameByIdAndName(teacherIdentity,courseName);
+		Map<Integer,String> map=DatabaseAccess.selectTabByIdAndName(teacherIdentity,courseName);
 		for(int k:map.keySet()){
 			String tagName=map.get(k);
 			out.println("<a href=\"learn.jsp?teacherIdentity="+teacherIdentity+"&courseName="+URLEncoder.encode(courseName)+"&tabIndex="+k+"\" target=\"iframeA\">"+tagName+"</a>");

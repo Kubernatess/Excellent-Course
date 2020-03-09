@@ -18,7 +18,7 @@ body>div {
 <body>
 <!--显示容器-->
 <div>
-<define:display teacherIdentity="${param.teacherIdentity}" courseName="${param.courseName}" tabIndex="${param.tabIndex}" columnIndex="${param.columnIndex}" subcolumnIndex="${param.subcolumnIndex}" />
+<define:display teacherIdentity="${param.teacherIdentity}" courseName="${param.courseName}" tabIndex="${param.tabIndex}" columnIndex="${param.columnIndex}" />
 </div>
 
 </body>

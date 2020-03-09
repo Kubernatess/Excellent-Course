@@ -13,12 +13,8 @@ import db.DatabaseAccess;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-       
-    public LoginServlet() {
-        super();
-        
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 设置响应内容类型
@@ -30,7 +26,7 @@ public class LoginServlet extends HttpServlet {
         // 如果不存在 session 会话,则创建一个 session 对象
         HttpSession session = request.getSession(true);
         // 根据用户名获得数据
-        Map<String,String> map=DatabaseAccess.getUserByName(identity);
+        Map<String,String> map=DatabaseAccess.getUserById(identity);
         // 如果map为空,说明该用户名不存在
         if(map.size()<=0){
         	response.sendRedirect("login.jsp");
@@ -49,21 +45,12 @@ public class LoginServlet extends HttpServlet {
         // 用户名存在,密码也正确,登陆成功,
         session.setAttribute("identity", identity);
         session.setAttribute("status",status);
-        // 如果该用户有备注名,首页右上角就显示备注名
-        if(map.get("name")!=null){
-        	session.setAttribute("username", map.get("name"));
-        }
-        //否则右上角显示学号或工号
-        else{
-        	session.setAttribute("username", identity);
-        }   
+        session.setAttribute("depart",map.get("depart"));
+        session.setAttribute("username", map.get("name"));
         //重定向到首页
 		response.sendRedirect("index.jsp");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

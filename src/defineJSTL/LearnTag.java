@@ -31,22 +31,13 @@ public class LearnTag extends SimpleTagSupport {
 	
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
-		List<Map<String,Object>> list=DatabaseAccess.selectColumnAndSubcolumnByIdAndNameAndIndex(teacherIdentity,courseName,tabIndex);
-		Iterator iterator=list.iterator();
-		while(iterator.hasNext()){
-			Map<String,Object> map=(Map<String,Object>) iterator.next();
-			int columnIndex=(int) map.get("columnIndex");
-			String columnName=(String) map.get("columnName");
-			out.println("<li tabindex=\""+columnIndex+"\"><span>▶</span>"+columnName+"");
-			// 输出子栏目
-			Map<Integer,String> subMap=(Map<Integer,String>)map.get("subMap");
-			out.println("<ul>");
-			for(int k:subMap.keySet()){
-				String subcolumnName=subMap.get(k);
-				out.println("<li><a href=\"display.jsp?teacherIdentity="+teacherIdentity+"&courseName="+URLEncoder.encode(courseName)+"&tabIndex="+tabIndex+"&columnIndex="+columnIndex+"&subcolumnIndex="+k+"\" target=\"iframeB\">"+subcolumnName+"</a></li>");
-			}
-			out.println("</ul>");
-			out.println("</li>");
+		Map<Integer,String> map=DatabaseAccess.selectColumnByIdAndNameAndIndex(teacherIdentity,courseName,tabIndex);
+		for(int columnIndex:map.keySet()){
+			String columnName = map.get(columnIndex);
+			out.println("<li>");
+			out.println("<a href=\"display.jsp?teacherIdentity="+teacherIdentity+"&courseName="+URLEncoder.encode(courseName)+"&tabIndex="+tabIndex+"&columnIndex="+columnIndex+"\" target=\"iframeB\">");
+			out.println(columnName);
+			out.println("</a></li>");
 		}
 	}
 }

@@ -12,10 +12,6 @@
 </head>
 
 <body>
-<!--给登陆用户赋予通行证-->
-<c:if test="${ sessionScope.status ne '老师' }">
-	<script>window.location.href="../login.jsp";</script>
-</c:if>
 <c:set var="Path" scope="request" value="${pageContext.request.contextPath}"/>
 <form action="${Path}/EditServlet" method="POST">
 
@@ -49,7 +45,7 @@
 
 <!--可编辑容器-->
 <div contentEditable="true" id="editor">
-<define:edit courseName="${param.courseName}" tabIndex="${param.tabIndex}" columnIndex="${param.columnIndex}" subcolumnIndex="${param.subcolumnIndex}" />
+<define:edit courseName="${param.courseName}" tabIndex="${param.tabIndex}" columnIndex="${param.columnIndex}" />
 </div>
 <c:set var="courseName" scope="session" value="${param.courseName}"/> 
 <c:set var="tabIndex" scope="session" value="${param.tabIndex}"/> 
@@ -62,7 +58,6 @@
 <input type="hidden" name="content">
 <input type="button" value="保存" id="save" />
 <a href="../learning.jsp?teacherIdentity=${sessionScope.identity}&courseName=${param.courseName}" target="_blank" id="preview">保存并预览</a>
-
 
 </form>
 </body>

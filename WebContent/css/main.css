@@ -81,6 +81,28 @@ nav>a>img {
 }
 
 
+/*定义容器的样式*/
+.container {
+	margin-left:150px;
+	padding:50px 0;	
+	width:950px;	
+}
+
+/*定义表单样式*/
+form {
+	float:right;
+}
+/*定义搜索框样式*/
+form>input[type="search"] {
+	width:200px;
+	height:30px;	
+}
+/*定义搜索按钮样式*/
+form>input[type="image"] {
+	border:1px solid #78b0f6;
+	vertical-align:middle;
+}
+
 
 /*定义分页样式*/
 .page {

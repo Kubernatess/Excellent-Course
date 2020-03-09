@@ -29,23 +29,14 @@ public class CustomTag extends SimpleTagSupport {
 		PageContext pc=(PageContext) getJspContext();
 		HttpSession session=pc.getSession();
 		String teacherIdentity=(String) session.getAttribute("identity");
+		
 		JspWriter out = getJspContext().getOut();
-		List<Map<String,Object>> list=DatabaseAccess.selectColumnAndSubcolumnByIdAndNameAndIndex(teacherIdentity,courseName,tabIndex);
-		Iterator iterator=list.iterator();
-		while(iterator.hasNext()){
-			Map<String,Object> map=(Map<String,Object>) iterator.next();
-			int columnIndex=(int) map.get("columnIndex");
-			String columnName=(String) map.get("columnName");
-			out.println("<li><span>▶</span><input type=\"text\" value=\""+columnName+"\" name=\"columnName\" tabindex=\""+columnIndex+"\" >");
-			// 输出子栏目
-			Map<Integer,String> subMap=(Map<Integer,String>)map.get("subMap");
-			out.println("<ul>");
-			for(int k:subMap.keySet()){
-				String subcolumnName=subMap.get(k);
-				out.println("<li><a href=\"edit.jsp?courseName="+URLEncoder.encode(courseName)+"&tabIndex="+tabIndex+"&columnIndex="+columnIndex+"&subcolumnIndex="+k+"\" target=\"iframeB\"><input type=\"text\" value=\""+subcolumnName+"\" name=\"subcolumnName\" tabindex=\""+k+"\"></a></li>");
-			}
-			out.println("</ul>");
-			out.println("</li>");
+		Map<Integer,String> map=DatabaseAccess.selectColumnByIdAndNameAndIndex(teacherIdentity,courseName,tabIndex);
+		for(int columnIndex:map.keySet()){
+			String columnName = map.get(columnIndex);
+			out.println("<li><a href=\"edit.jsp?courseName="+URLEncoder.encode(courseName)+"&tabIndex="+tabIndex+"&columnIndex="+columnIndex+"\" target=\"iframeB\">");
+			out.println("<input type=\"text\" value=\""+columnName+"\" name=\"columnName\" tabindex=\""+columnIndex+"\" >");
+			out.println("</a></li>");
 		}
 	}
 }

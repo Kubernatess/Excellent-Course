@@ -110,8 +110,7 @@ window.onload=function(){
 		var courseName=document.getElementById('courseName').value;
 		var tabIndex=document.getElementById('tabIndex').value;
 		var columnIndex=document.getElementById('columnIndex').value;
-		var subcolumnIndex=document.getElementById('subcolumnIndex').value;
-		hypernode.href="/Excellent-Course/DownloadServlet?courseName="+courseName+"&tabIndex="+tabIndex+"&columnIndex="+columnIndex+"&subcolumnIndex="+subcolumnIndex+"&fileName="+fileName+"";
+		hypernode.href="/Excellent-Course/DownloadServlet?courseName="+courseName+"&tabIndex="+tabIndex+"&columnIndex="+columnIndex+"&fileName="+fileName+"";
 		var textnode3=document.createTextNode("下载地址");
 		// 追加节点
 		hypernode.appendChild(textnode3);
@@ -129,23 +128,13 @@ window.onload=function(){
 		var xmlhttp=new XMLHttpRequest();
 		xmlhttp.open("POST","../UploadServlet",true);
 		xmlhttp.send(fd);
-		
-		let xmlhttp2=new XMLHttpRequest();
-		xmlhttp2.onreadystatechange=function(){
-			if (this.readyState==4 && this.status==200)
-			{
-				alert(this.responseText);
-			}
-		}
-		xmlhttp2.open("POST","../ResponseServlet",true);
-		xmlhttp2.send(fd);
 	};
 	
 	
 	// 上传图片事件
 	var image=document.getElementsByName('image')[0];
 	image.onchange=function(){
-		// 先把所有文件上次表单项的值设置为空
+		// 先把所有文件上传表单项的值设置为空
 		let files=document.querySelectorAll("input[type=\"file\"]");
 		for(let i=0;i<files.length;i++){
 			if(files[i]!=this)files[i].value="";
@@ -160,20 +149,15 @@ window.onload=function(){
 		
 		var form=document.getElementsByTagName('form')[0];
 		var fd = new FormData(form);
-		var xmlhttp=new XMLHttpRequest();
-		xmlhttp.open("POST","../UploadServlet",true);
-		xmlhttp.send(fd);
-		
-		let xmlhttp2=new XMLHttpRequest();
-		xmlhttp2.onreadystatechange=function(){
+		let xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function(){
 			if (this.readyState==4 && this.status==200)
 			{
-				alert(decodeURIComponent(this.responseText))
-				imagenode.src=""+decodeURIComponent(this.responseText);
+				imagenode.src=""+decodeURIComponent(this.responseText).replace(/\+/g, " ");
 			}
 		}
-		xmlhttp2.open("POST","../ResponseServlet",true);
-		xmlhttp2.send(fd);
+		xmlhttp.open("POST","../UploadServlet",true);
+		xmlhttp.send(fd);
 	};
 	
 	
@@ -205,21 +189,16 @@ window.onload=function(){
 		
 		var form=document.getElementsByTagName('form')[0];
 		var fd = new FormData(form);
-		var xmlhttp=new XMLHttpRequest();
-		xmlhttp.open("POST","../UploadServlet",true);
-		xmlhttp.send(fd);
-		
-		let xmlhttp2=new XMLHttpRequest();
-		xmlhttp2.onreadystatechange=function(){
+		let xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function(){
 			if (this.readyState==4 && this.status==200)
 			{
-				alert(decodeURIComponent(this.responseText))
 				sourceNode1.src=""+decodeURIComponent(this.responseText);
 				sourceNode2.src=""+decodeURIComponent(this.responseText);
 			}
 		}
-		xmlhttp2.open("POST","../ResponseServlet",true);
-		xmlhttp2.send(fd);
+		xmlhttp.open("POST","../UploadServlet",true);
+		xmlhttp.send(fd);
 	};
 	
 	
@@ -271,16 +250,4 @@ function appendNewText(font){
 	spannode.style.fontStyle=font.style;
 	spannode.style.color=font.color;
 	spannode.style.fontWeight=font.weight;
-}
-
-
-
-function selectText(){
-		if(document.Selection){       
-			//ie浏览器
-			return document.selection.createRange().text;     	 
-		}else{    
-			//标准浏览器
-			return window.getSelection().toString();	 
-		}	 
 }

@@ -7,19 +7,11 @@ form {
 form>ul {
 	padding:0	
 }
-/*定义切换按钮的样式*/
-form>ul>li>span {
-	cursor:pointer;	
-}
 /*设置子栏目的样式*/
 form ul>li input {
 	border:none;
 	background-color:#FFF;	
 	cursor:default;
-}
-/*默认把子栏目隐藏掉*/
-form>ul>li>ul {
-	display:none;	
 }
 /*定义提交按钮的样式*/
 form>input:last-child {

@@ -6,6 +6,8 @@ public class Column {
 	private int tabIndex;
 	private int columnIndex;
 	private String columnName;
+	private String content;
+	
 	public String getTeacherIdentity() {
 		return teacherIdentity;
 	}
@@ -35,6 +37,12 @@ public class Column {
 	}
 	public void setColumnName(String columnName) {
 		this.columnName = columnName;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	
 }

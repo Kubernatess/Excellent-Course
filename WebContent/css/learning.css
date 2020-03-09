@@ -1,5 +1,10 @@
 @charset "utf-8";
-
+/*定义背景样式*/
+body {
+	margin:0;	
+	overflow:hidden;
+	background:url(../image/skin/background2.jpg) no-repeat fixed center center / 100% 100%;
+}
 /*定义整个容器的样式*/
 body>div {
 	margin:100px auto;
@@ -10,6 +15,7 @@ body>div>nav {
 	background-color:#F2F2F2;
 	padding:20px 50px;
 	margin-bottom:50px;
+	opacity:0.85;
 }
 /*定义栏目样式*/
 body>div>nav>a {

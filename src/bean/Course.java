@@ -4,10 +4,9 @@ public class Course {
 	private String teacherIdentity;
 	private String name;
 	private String description;
-	private String depart;
-	private String template;
 	private String cover;
 	private String major;
+	private String team;
 	public String getTeacherIdentity() {
 		return teacherIdentity;
 	}
@@ -26,18 +25,6 @@ public class Course {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getDepart() {
-		return depart;
-	}
-	public void setDepart(String depart) {
-		this.depart = depart;
-	}
-	public String getTemplate() {
-		return template;
-	}
-	public void setTemplate(String template) {
-		this.template = template;
-	}
 	public String getCover() {
 		return cover;
 	}
@@ -49,6 +36,12 @@ public class Course {
 	}
 	public void setMajor(String major) {
 		this.major = major;
+	}
+	public String getTeam() {
+		return team;
+	}
+	public void setTeam(String team) {
+		this.team = team;
 	}
 	
 }

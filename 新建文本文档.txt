@@ -4,8 +4,6 @@ activeElement属性
 
 选择器、id、class的问题
 
-变量命名
-
 currentNode用标记位属性为来取替
 
 注意 for循环里面不用this,onclick里面才会用this
@@ -20,11 +18,7 @@ Insert Update
 
 滤镜、灰度图片
 
-querySelector选择器
-
 用数组来关联两个下拉列表
-
-supcolumn改回`column`
 
 子查询
 
@@ -38,5 +32,10 @@ createElement、innerHTML
 
 只能打开一个customization页面
 
-//保存subDirectoryPath,供UploadServlet使用
-		pc.getSession().setAttribute("subDirectoryPath", subDirectoryPath);
+空格编码的问题
+
+作业上传区
+
+播放PPT
+
+${Map对象},尝试一下是否可以减少自定义标签

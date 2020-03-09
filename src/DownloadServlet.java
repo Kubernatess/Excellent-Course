@@ -15,15 +15,17 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/DownloadServlet")
 public class DownloadServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
       
-	// 上传文件存储目录
-    private static final String DOWNLOAD_DIRECTORY = "upload";
-    
-    public DownloadServlet() {
-        super();
-    }
+	private String downloadPath;
 
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		downloadPath = (String) getServletContext().getAttribute("uploadPath");
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
@@ -31,12 +33,9 @@ public class DownloadServlet extends HttpServlet {
         String courseName=request.getParameter("courseName");
         int tabIndex=Integer.parseInt(request.getParameter("tabIndex"));
         int columnIndex=Integer.parseInt(request.getParameter("columnIndex"));
-        int subcolumnIndex=Integer.parseInt(request.getParameter("subcolumnIndex"));
-        String filename=new String(request.getParameter("fileName").getBytes("ISO8859-1"),"UTF-8");
-		
+        String filename=request.getParameter("fileName");
         // 这个路径相对当前应用的目录
-        String downloadPath = getServletContext().getRealPath("/") + File.separator + DOWNLOAD_DIRECTORY;
-		String filePath=downloadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+columnIndex+File.separator+subcolumnIndex+File.separator+filename;
+        String filePath=downloadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+columnIndex+File.separator+filename;
 		InputStream in=new FileInputStream(filePath);
 		//设置MINE类型
 		String type=getServletContext().getMimeType(filename);

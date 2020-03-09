@@ -71,12 +71,6 @@
         	<rtexprvalue>true</rtexprvalue>
         	<type>Integer</type>
         </attribute>
-        <attribute>
-        	<name>subcolumnIndex</name>
-        	<required>false</required>
-        	<rtexprvalue>true</rtexprvalue>
-        	<type>Integer</type>
-        </attribute>
     </tag>
     
     <tag>
@@ -167,11 +161,42 @@
         	<rtexprvalue>true</rtexprvalue>
         	<type>Integer</type>
         </attribute>
+    </tag>
+    
+    <tag>
+        <name>management</name>
+        <tag-class>defineJSTL.ManagementTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    
+    <tag>
+        <name>content</name>
+        <tag-class>defineJSTL.ContentTag</tag-class>
+        <body-content>empty</body-content>
         <attribute>
-        	<name>subcolumnIndex</name>
+        	<name>major</name>
         	<required>false</required>
         	<rtexprvalue>true</rtexprvalue>
-        	<type>Integer</type>
+        	<type>String</type>
         </attribute>
     </tag>
+    
+    <tag>
+        <name>search</name>
+        <tag-class>defineJSTL.SearchTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+        	<name>key</name>
+        	<required>false</required>
+        	<rtexprvalue>true</rtexprvalue>
+        	<type>String</type>
+        </attribute>
+    </tag>
+    
+    <tag>
+        <name>personal</name>
+        <tag-class>defineJSTL.PersonalTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+
 </taglib>

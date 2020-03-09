@@ -6,7 +6,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-import bean.Subcolumn;
+import bean.Column;
 import db.DatabaseAccess;
 
 public class DisplayTag extends SimpleTagSupport {
@@ -14,7 +14,6 @@ public class DisplayTag extends SimpleTagSupport {
 	private String courseName;
 	private int tabIndex;
 	private int columnIndex;
-	private int subcolumnIndex;
 	
 	public void setTeacherIdentity(String teacherIdentity) {
 		this.teacherIdentity = teacherIdentity;
@@ -28,20 +27,16 @@ public class DisplayTag extends SimpleTagSupport {
 	public void setColumnIndex(int columnIndex) {
 		this.columnIndex = columnIndex;
 	}
-	public void setSubcolumnIndex(int subcolumnIndex) {
-		this.subcolumnIndex = subcolumnIndex;
-	}
+
 	
 	public void doTag() throws JspException, IOException {
-		Subcolumn subcolumn=new Subcolumn();
-		subcolumn.setTeacherIdentity(teacherIdentity);
-		subcolumn.setCourseName(courseName);
-		subcolumn.setTabIndex(tabIndex);
-		subcolumn.setColumnIndex(columnIndex);
-		subcolumn.setSubcolumnIndex(subcolumnIndex);
-		String content=DatabaseAccess.getContent(subcolumn);
+		Column column=new Column();
+		column.setTeacherIdentity(teacherIdentity);
+		column.setCourseName(courseName);
+		column.setTabIndex(tabIndex);
+		column.setColumnIndex(columnIndex);
+		String content=DatabaseAccess.getContent(column);
 		JspWriter out = getJspContext().getOut();
 		out.println(content);
-
 	}
 }

@@ -49,6 +49,14 @@ aside>span+ol>li{
 	margin:0 15px;	
 	display:inline;	
 }
+/*定义每一行里的每一个超链接的样式*/
+.category>ul>li>a {
+	text-decoration:none;
+	color:#000;
+}
+.category>ul>li:first-child~li>a:hover {
+	color:#78b0f6;
+}
 
 
 /*定义选项卡里的每一个超链接的样式*/
@@ -70,4 +78,12 @@ aside>span+ol>li{
 	border-bottom:none;
 	border-radius:10px 10px 0 0;
 	color:#000;
+}
+
+
+/*定义iframe的样式*/
+.container>iframe {
+	margin-top:50px;
+	width:100%;
+	border:none;
 }

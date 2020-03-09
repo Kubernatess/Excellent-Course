@@ -12,10 +12,6 @@
 </head>
 
 <body>
-<!--给登陆用户赋予通行证-->
-<c:if test="${ sessionScope.status ne '老师' }">
-	<script>window.location.href="../login.jsp";</script>
-</c:if>
 <c:set var="Path" scope="request" value="${pageContext.request.contextPath}"/>
 <!--侧栏部分-->
 <aside>
@@ -29,33 +25,9 @@
 <define:basic courseName="${param.courseName}" />
 
 <input type="submit" id="save" value="保存" />
-<input type="button" id="preview" value="保存并预览" />
+<a href="../course.jsp?teacherIdentity=${sessionScope.identity}&courseName=${param.courseName}" target="_blank" id="preview">保存并预览</a>
 
 </form>
-
-
-<!--模态框部分-->
-<div id="outer">
-	<div id="model">
-    <span>选择模板</span><span id="close">×</span>
-    <ul>
-    <li><img src="../image/image(2).png"><span>默认</span></li>
-    <li><img src="../image/image(2).png"><span>蓝色天空</span></li>
-    <li><img src="../image/image(2).png"><span>简约风格</span></li>
-    <li><img src="../image/image(2).png"><span>黑绿之旅</span></li>
-    <li><img src="../image/image(2).png"><span>简约至极</span></li>
-    <li><img src="../image/image(2).png"><span>蓝色清新</span></li>
-    <li><img src="../image/image(2).png"><span>黑色低调</span></li>
-    <li><img src="../image/image(2).png"><span>荷塘月色</span></li>
-    <li><img src="../image/image(2).png"><span>水乡墨雅</span></li>
-    <li><img src="../image/image(2).png"><span>优雅世界</span></li>
-    <li><img src="../image/image(2).png"><span>超级模板</span></li>
-    <li><img src="../image/image(2).png"><span>Web之道</span></li>
-    </ul>
-    <button type="button" id="confirm">确认</button>
-    <button type="button" id="cancel">取消</button>
-    </div>
-</div>
 
 </body>
 </html>

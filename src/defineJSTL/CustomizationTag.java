@@ -24,10 +24,10 @@ public class CustomizationTag extends SimpleTagSupport {
 		HttpSession session=pc.getSession();
 		String teacherIdentity=(String) session.getAttribute("identity");
 		JspWriter out = getJspContext().getOut();
-		Map<Integer,String> map=DatabaseAccess.selectTagNameByIdAndName(teacherIdentity,courseName);
+		Map<Integer,String> map=DatabaseAccess.selectTabByIdAndName(teacherIdentity,courseName);
 		for(int k:map.keySet()){
-			String tagName=map.get(k);
-			out.println("<a href=\"custom.jsp?courseName="+URLEncoder.encode(courseName)+"&tabIndex="+k+"\" target=\"iframeA\"><input type=\"text\" value=\""+tagName+"\" tabindex=\""+k+"\" name=\"tag\"></a>");
+			String tabName=map.get(k);
+			out.println("<a href=\"custom.jsp?courseName="+URLEncoder.encode(courseName)+"&tabIndex="+k+"\" target=\"iframeA\"><input type=\"text\" value=\""+tabName+"\" tabindex=\""+k+"\" name=\"tabName\" /></a>");
 		}
 	}
 }

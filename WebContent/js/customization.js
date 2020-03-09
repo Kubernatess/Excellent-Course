@@ -26,22 +26,22 @@ window.onload=function(){
 	var button=document.querySelector("form>button");	
 	button.onclick=function(){
 		var form=this.parentNode;
-		var arrHyperlink=form.getElementsByTagName("a");
-		var lastHyperlink=arrHyperlink[arrHyperlink.length-1]
-		var newHyperlink=lastHyperlink.cloneNode(true);
-		var input=newHyperlink.children[0];
+		var allTab=form.getElementsByTagName("a");
+		var lastTab=allTab[allTab.length-1]
+		var newTab=lastTab.cloneNode(true);
+		var input=newTab.children[0];
 		input.value="新建标题";
-		input.name="tag";
-		form.insertBefore(newHyperlink,this);
+		input.name="tabName";
+		form.insertBefore(newTab,this);
 		//自动执行重命名事件
-		changeStyle.call(newHyperlink)
-		renameTag.call(newHyperlink);
+		changeStyle.call(newTab);
+		renameTag.call(newTab);
 		// 设置隐藏域的值
 		var tabIndex=document.getElementsByName('tabIndex')[0];
-		tabIndex.value=lastHyperlink.children[0].tabIndex+1;
+		tabIndex.value=lastTab.children[0].tabIndex+1;
 		// 修改iframe页面
-		var iframe=document.getElementsByName('iframe')[0];
-		iframe.src="custom.html";
+		var iframe=document.getElementsByName('iframeA')[0];
+		iframe.src="custom.jsp";
 		// 设置隐藏域的值
 		var operation=document.getElementsByName('operation')[0];
 		operation.value="add";
@@ -54,9 +54,9 @@ window.onload=function(){
 /*点击标题栏目的事件处理*/
 function changeStyle(){
 	// 对其他栏目设置默认样式
-	var arrHyperlink=document.querySelectorAll("form>a");
-	for(var i=0;i<arrHyperlink.length;i++){
-		arrHyperlink[i].children[0].style.backgroundColor="#FFF";	
+	var allTab=document.querySelectorAll("form>a");
+	for(var i=0;i<allTab.length;i++){
+		allTab[i].children[0].style.backgroundColor="#FFF";	
 	};
 	// 给当前栏目设置样式
 	this.children[0].style.backgroundColor="#d2d3d561";
@@ -109,11 +109,11 @@ function popmenu(){
 // 点击重命名事件
 function renameTag(){
 	// 先禁用其他标题栏目所有点击事件和右键菜单事件
-	var arrHyperlink=this.parentNode.getElementsByTagName('a');
-	for(var i=0;i<arrHyperlink.length;i++){
-		arrHyperlink[i].removeAttribute("href");
-		arrHyperlink[i].removeEventListener("click",changeStyle);
-		arrHyperlink[i].removeEventListener("contextmenu",popmenu);
+	var allTab=this.parentNode.getElementsByTagName('a');
+	for(var i=0;i<allTab.length;i++){
+		allTab[i].removeAttribute("href");
+		allTab[i].removeEventListener("click",changeStyle);
+		allTab[i].removeEventListener("contextmenu",popmenu);
 	}
 	// 禁用添加按钮
 	var button=this.parentNode.getElementsByTagName('button')[0];

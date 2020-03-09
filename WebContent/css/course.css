@@ -45,31 +45,73 @@
 }
 
 
-/*定义课程详情部分的样式*/
-.container>.detail {
+/*定义课程内容部分的样式*/
+.container>.content {
 	float:left;		
 	width:800px;
 }
-/*详情部分选项卡的样式*/
-.container>.detail>span {
+/*内容部分选项卡的样式*/
+.container>.content>span {
 	font-size:20px;	
-	padding:10px;
+	padding:8px;
 	margin-right:20px;
 }
+/*内容部分第一个选项卡的样式*/
+.container>.content>span:first-child {
+	border-bottom:3px solid #3C0;	
+	color:#3C0;
+}
+
+
 /*定义详细描述的样式*/
-.container>.detail>hr+p {
+.container>.content>.detail>p:first-child {
 	padding:25px;
 	background-color:#eee2ff75;	
 	margin-top:30px;
 }
 /*定义标题栏目的样式*/
-.container>.detail>h3 {
+.container>.content>.detail>h3 {
 	margin-top:50px;
 }
-/*详情部分第一个选项卡的样式*/
-.container>.detail>span:first-child {
-	border-bottom:3px solid #3C0;	
-	color:#3C0;
+
+
+/*默认隐藏评论部分*/
+.container>.content>.comment {
+	display:none;
+}
+/*定义评论表单的样式*/
+.container>.content>.comment>form>input[type="submit"] {
+	float:right;
+	background-color:#169BD5;
+	border:1px solid #169BD5;
+	border-radius:5px;
+	width:100px;
+	height:35px;
+	color:#FFF;
+	margin-bottom:60px;
+}
+/*定义所有评论的样式*/
+.container>.content>.comment>ul {
+	list-style-type:none;
+	padding-left:0px;
+}
+/*定义每条评论的样式*/
+.container>.content>.comment>ul>li {
+	margin:30px 0;
+}
+/*定义每条评论作者的样式*/
+.container>.content>.comment>ul>li>span:nth-of-type(1) {
+	margin-right:20px;
+	color:#999;
+}
+/*定义每条评论时间的样式*/
+.container>.content>.comment>ul>li>span:nth-of-type(2) {
+	color:#999;
+	float:right;
+}
+/*定义评论的样式*/
+.container>.content>.comment>ul>li>p {
+	font-size:18px;
 }
 
 

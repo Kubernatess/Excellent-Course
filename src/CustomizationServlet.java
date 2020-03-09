@@ -11,21 +11,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
 import bean.Column;
-import bean.Subcolumn;
 import bean.Tab;
 import db.DatabaseAccess;
 
 @WebServlet("/CustomizationServlet")
 public class CustomizationServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 	
-	private static final String UPLOAD_DIRECTORY = "upload";
+	private static final long serialVersionUID = 1L;
 
-    public CustomizationServlet() {
-        super();
-    }
+	private String uploadPath;
 
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		uploadPath = (String) getServletContext().getAttribute("uploadPath");
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 设置响应内容类型
         response.setContentType("text/html;charset=UTF-8");
@@ -33,10 +38,9 @@ public class CustomizationServlet extends HttpServlet {
         String teacherIdentity=(String) session.getAttribute("identity");
         String courseName=new String(request.getParameter("courseName").getBytes("ISO8859-1"),"UTF-8");
         int tabIndex=Integer.parseInt(request.getParameter("tabIndex"));
-        String uploadPath = getServletContext().getRealPath("/")  + UPLOAD_DIRECTORY;
         
         String operation=request.getParameter("operation");
-        if(operation.equals("add")){
+        if(operation.equals("add")||operation.equals("rename")){
         	String tabName=new String(request.getParameter("tabName").getBytes("ISO8859-1"),"UTF-8");
         	Tab tab=new Tab();
             tab.setTeacherIdentity(teacherIdentity);
@@ -44,38 +48,12 @@ public class CustomizationServlet extends HttpServlet {
             tab.setTabIndex(tabIndex);
             tab.setName(tabName);
             DatabaseAccess.addTab(tab);
-            
-            Column column=new Column();
-            column.setTeacherIdentity(teacherIdentity);
-            column.setCourseName(courseName);
-            column.setTabIndex(tabIndex);
-            column.setColumnIndex(1);
-            column.setColumnName("添加栏目");
-            DatabaseAccess.addColumn(column);
-            
-            Subcolumn subColumn=new Subcolumn();
-            subColumn.setTeacherIdentity(teacherIdentity);
-            subColumn.setCourseName(courseName);
-            subColumn.setTabIndex(tabIndex);
-            subColumn.setColumnIndex(1);
-            subColumn.setSubcolumnIndex(1);
-            subColumn.setSubcolumnName("添加子栏目");
-            DatabaseAccess.addSubColumn(subColumn);
             // 并创建文件夹
-            String dirPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+"1"+File.separator+"1";
-            File dirFile=new File(dirPath);
-    		if(!dirFile.exists()){
-    			dirFile.mkdirs();
-    		}
-        }
-        else if(operation.equals("rename")){
-        	String tabName=new String(request.getParameter("tabName").getBytes("ISO8859-1"),"UTF-8");
-        	Tab tab=new Tab();
-            tab.setTeacherIdentity(teacherIdentity);
-            tab.setCourseName(courseName);
-            tab.setTabIndex(tabIndex);
-            tab.setName(tabName);
-            DatabaseAccess.modifyTab(tab);
+	        String dirPath=uploadPath+File.separator+teacherIdentity+File.separator+courseName+File.separator+tabIndex+File.separator+"0";
+	        File dirFile=new File(dirPath);
+	    	if(!dirFile.exists()){
+	    		dirFile.mkdirs();
+	    	}        
         }
         else if(operation.equals("leftshift")){
         	int previousIndex=tabIndex-1;

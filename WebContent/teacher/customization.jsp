@@ -12,10 +12,6 @@
 </head>
 
 <body>
-<!--给登陆用户赋予通行证-->
-<c:if test="${ sessionScope.status ne '老师' }">
-	<script>window.location.href="../login.jsp";</script>
-</c:if>
 <c:set var="Path" scope="request" value="${pageContext.request.contextPath}"/>
 <!--定义一个大容器-->
 <div>
@@ -33,7 +29,9 @@
 <form method="POST" action="${Path}/CustomizationServlet">
 <a href="basic.jsp?courseName=${param.courseName}" target="iframeA"><input type="text" value="基本信息"></a>
 <!-- 遍历所有标题栏目 -->
-<define:customization courseName="${param.courseName}" />
+<c:if test="${not empty param.courseName}">
+	<define:customization courseName="${param.courseName}" />
+</c:if>
 <!-- 如果还没有填写基本信息,则不允许新增标题栏目 -->
 <c:choose>
 	<c:when test="${empty param.courseName}">

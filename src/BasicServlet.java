@@ -15,47 +15,45 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import bean.Course;
-import bean.Team;
 import db.DatabaseAccess;
 
 @WebServlet("/BasicServlet")
 public class BasicServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	
-	// 上传文件存储目录
-    private static final String UPLOAD_DIRECTORY = "upload";
- 
-    public BasicServlet() {
-        super();
-    }
+	private DiskFileItemFactory factory;
+	private ServletFileUpload upload;
+	private String uploadPath;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void init() throws ServletException {
+		super.init();
 		// 配置上传参数
-        DiskFileItemFactory factory = new DiskFileItemFactory();
-        ServletFileUpload upload = new ServletFileUpload(factory);        
+        factory = new DiskFileItemFactory();
+        upload = new ServletFileUpload(factory);        
         // 中文处理
         upload.setHeaderEncoding("UTF-8");
-        // 构造临时路径来存储上传的文件
         // 这个路径相对当前应用的目录
-        String uploadPath = getServletContext().getRealPath("/")  + UPLOAD_DIRECTORY;
-		
-        String teacherIdentity=null;
-        String courseName=null;
-        String description=null;
-        String depart=null;
-        String template=null;
-        String fileName=null;
-        String major=null;
-        List<String> list=new ArrayList<>();
+        uploadPath = (String) getServletContext().getAttribute("uploadPath");
+	}
+
+	@SuppressWarnings("unchecked")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String courseName="";
+        String description="";
+        String template="";
+        String fileName="";
+        String major="";
+        String team="";
         
         HttpSession session = request.getSession();
-        teacherIdentity=(String) session.getAttribute("identity");
+        String teacherIdentity=(String) session.getAttribute("identity");
+        String depart=(String) session.getAttribute("depart");
         
         // 解析请求的内容提取文件数据
-        @SuppressWarnings("unchecked")
-		List<FileItem> formItems;
+        List<FileItem> formItems;
 		try {
 			formItems = upload.parseRequest(request);
 			if (formItems != null && formItems.size() > 0) {
@@ -71,14 +69,11 @@ public class BasicServlet extends HttpServlet {
 	                    else if(field.equals("description")){
 	                    	description=value;
 	                    }
-	                    else if(field.equals("depart")){
-	                    	depart=value;
-	                    }
 	                    else if(field.equals("major")){
 	                    	major=value;
 	                    }
 	                    else if(field.equals("teacherName")){
-	                    	list.add(value);
+	                    	team += value+",";
 	                    }
 	                    else if(field.equals("template")){
 	                    	template=value;
@@ -94,31 +89,23 @@ public class BasicServlet extends HttpServlet {
 	            			dirFile.mkdir();
 	            		}
 	            		
+	            		// 保存文件到硬盘
 	                	fileName = new File(item.getName()).getName();
 	                    String filePath=dirPath+File.separator+fileName;
 	                    File storeFile = new File(filePath);
-	                    // 保存文件到硬盘
 	                    item.write(storeFile);
 	                }
 	            }
 			}
-			
 			// 添加一门课程 
             Course course=new Course();      
             course.setTeacherIdentity(teacherIdentity);
             course.setName(courseName);
             course.setDescription(description);
-            course.setDepart(depart);
             course.setMajor(major);
             course.setCover(fileName);
-            course.setTemplate(template);
+            course.setTeam(team);
             DatabaseAccess.addCourse(course);
-            // 添加教学团队成员
-            Team team=new Team();
-            team.setTeacherIdentity(teacherIdentity);
-            team.setCourseName(courseName);
-            team.setMember(list);
-            DatabaseAccess.addTeam(team);
             // 跳回基本信息页面,并显示所填写的信息
             response.sendRedirect("./teacher/basic.jsp?courseName="+URLEncoder.encode(courseName)+"");
 		} 

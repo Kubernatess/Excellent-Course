@@ -1,0 +1,49 @@
+/*定义容器的样式*/
+div {
+	margin:50px 0 0 100px;
+}
+/*定义标题的样式*/
+div>p {
+	font-size:24px;	
+	padding:20px;
+	width:100px;
+	color:#78b0f6;
+	border:1px solid #ddd;
+	border-bottom:none;
+	border-radius:10px 10px 0 0;
+	text-align:center;
+}
+/*定义无序列表的样式*/
+div>ul {
+	list-style-type:none;
+	padding:0;
+}
+/*定义无序列表项的样式*/
+div>ul>li {
+	float:left;
+	margin-right:50px;
+}
+/*定义图片的样式*/
+div>ul>li>a>img {
+	height:150px;
+	margin-bottom:10px;
+	margin-top:50px;
+	display:block;
+}
+/*定义添加课程的样式*/
+div>ul>li:last-child>a {
+	font-size:28px;
+}
+/*定义添加按钮的样式*/
+div>ul>li:last-child>a>img {
+	vertical-align: -25px;
+	height:50px;
+	margin-right:10px;
+	display:inline;
+	margin-top:100px;
+}
+/*定义课程名称的样式*/
+div>ul>li>a {
+	text-decoration:none;
+	color:#000;
+}
