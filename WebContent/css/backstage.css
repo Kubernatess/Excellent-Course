@@ -1,0 +1,48 @@
+@charset "utf-8";
+/*定义容器的样式*/
+body {
+	margin:50px 100px 0;
+}
+
+/*定义导航链接的样式*/
+p>a {
+	text-decoration:none;
+	color:#000;
+}
+p>a:last-child {
+	color:#78b0f6;
+}
+p>a:hover {
+	color:#78b0f6;
+}
+p>a:after{
+	content:" > ";
+}
+
+hr {
+	margin: 20px 0px;
+}
+
+/*定义文件的样式*/
+body>a {
+	display: inline-block;
+	padding: 40px 30px 20px;
+	text-decoration:none;
+	color:#000;
+	text-align:center;
+}
+body>a:hover {
+	background-color: #f2faff !important;
+}
+body>a:focus {
+	background-color: #daf5ff;
+}
+a>img {
+	height:110px;
+}
+a>p {
+	overflow:hidden;
+	text-overflow:ellipsis;
+	width:150px;
+	white-space:nowrap;
+}

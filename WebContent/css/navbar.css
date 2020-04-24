@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	margin:0;
+}
+/*定义导航条样式*/
+nav {
+	background-color:#199ED8;		
+	padding:4px 50px;
+}
+nav * {
+	vertical-align:middle;
+}
+/*定义华软Logo样式*/
+nav>img {
+	height:50px;
+}
+/*定义'广州大学华软软件学院'文本样式*/
+nav>span {
+	font-size:27px;
+	color:#FFF;
+}
+/*定义登陆样式以及下拉菜单的样式*/
+nav>a , .dropdown {	
+	font-size:18px;
+	color:#000;
+	text-decoration:none;
+	float:right;
+	margin-top:8px;
+}
+/*定义登陆用户图标的样式*/
+nav>a>img , .dropdown>img{
+	height:35px;
+}
+
+/*定义下拉内容的样式*/
+.dropdown-content {
+    display:none;
+    position:absolute;
+    background-color:#f9f9f9;
+    width:150px;
+    box-shadow:0px 8px 16px rgba(0,0,0,0.2);
+	z-index:1;
+}
+.dropdown-content>a {
+    color:inherit;
+	font-size: initial;
+    padding:12px 16px;
+    text-decoration:inherit;
+    display:block;
+}
+.dropdown-content>a:nth-of-type(2) {
+	border-bottom:1px dashed grey;
+}
+.dropdown-content>a:last-child {
+	border-top:1px dashed grey;	
+}
+.dropdown-content>a:hover {
+	background-color:#f1f1f1
+}
+/*下拉菜单悬停时再到下拉内容时的样式*/
+.dropdown:hover>.dropdown-content {
+    display:block;
+}

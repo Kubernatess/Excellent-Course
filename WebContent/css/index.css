@@ -1,0 +1,95 @@
+@charset "utf-8";
+/*定义侧边栏样式*/
+aside {
+	position:absolute;
+	top:150px;
+	right:100px;	
+}
+/*定义'精品课程'旁边的装饰*/
+aside>span:empty {
+	background-color:#199ED8;
+	width:20px;
+	height:45px;
+	float:left;
+	margin:0 10px;
+}
+/*定义'精品课程'文本样式*/
+aside>span {
+	font-size:28px;	
+}
+/*定义有序列表选项的样式*/
+aside>span+ol>li{	
+	margin:15px 0;
+	font-size:20px;
+}
+
+/*定义分类样式*/
+.category {
+	background-color:#F2F2F2;
+	padding:10px 20px 15px;	
+	margin-bottom:80px;
+}
+/*定义分类里面的每一行样式*/
+.category>ul {
+	margin:5px 0;	
+	padding:0;
+}
+/*定义每一行的第一个超链接的样式*/
+.category>ul>li:first-child {
+	font-size:20px;
+}
+/*定义❯的样式*/
+.category>ul>li:first-child:after {
+	content:"❯";
+	font:900 20px Arial,Helvetica,sans-serif;
+	margin-left:15px;
+}
+/*定义每一行里的每一个超链接的样式*/
+.category>ul>li {
+	margin:0 15px;	
+	display:inline;	
+}
+/*定义每一行里的每一个超链接的样式*/
+.category>ul>li>a {
+	text-decoration:none;
+	color:#000;
+}
+.category>ul>li>a:hover {
+	color:#78b0f6;
+}
+
+
+/*定义选项卡里的每一个超链接的样式*/
+.tab>a {
+	font-size:20px;	
+	padding:20px;
+	border-bottom:1px solid #D3D3D3;
+	color:#78b0f6;
+}
+/*鼠标悬停在选项卡时*/
+.tab>a:hover {
+	background-color:#e6e6fffc;	
+	border:1px solid #ddd;
+	border-radius:10px 10px 0 0;
+}
+
+.tab>a:first-child {
+	border:1px	solid #D3D3D3;
+	border-bottom:none;
+	border-radius:10px 10px 0 0;
+	color:#000;
+}
+
+
+/*定义容器的样式*/
+.container {
+	margin-left:150px;
+	padding:50px 0;	
+	width:950px;	
+}
+/*定义iframe的样式*/
+.container>iframe {
+	margin-top:50px;
+	width:100%;
+	border:none;
+}

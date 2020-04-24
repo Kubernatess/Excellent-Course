@@ -1,0 +1,49 @@
+@charset "utf-8";
+/*对内容的样式进行定义*/
+table {
+	margin-top:45px;
+}
+/*定义封面的样式*/
+th>img {
+	width:320px;
+	height:160px;
+	margin-right:15px;
+}
+/*'课程名称'文本样式*/
+th {
+	font-size:24px;
+	text-align:left;
+	vertical-align:top;
+	font-weight: 400;
+}
+/*定义超链接的样式*/
+th>a {
+	text-decoration: none;
+	color: #000;
+}
+/*'课程名称'文本悬停时的样式*/
+th>a:hover {
+	color:#78b0f6;
+}
+/*定义'系别'和'教学团队'文本样式*/
+td>span {
+	margin-right:40px;
+	font-size:16px;
+	color:#999;	
+}
+/*定义'课程描述'文本样式*/
+td>p {
+	font-size:16px;
+	white-space:nowrap;
+	width:600px; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+/*定义用户图标和留言图标的样式*/
+td>img {
+	height:20px;
+}
+/*参与用户数和留言评论数的文本样式*/
+td>samp {
+	margin:0 20px 0 5px;
+}

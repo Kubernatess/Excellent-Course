@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+/*定义背景样式*/
+body {
+	margin:0;	
+}
+/*定义导航样式*/
+body>nav {	
+	background-color:#F7F7F7;
+	text-align: center;
+	padding:15px 30px;
+}
+/*导航条里所有的元素垂直居中*/
+body>nav * {
+	vertical-align:middle;
+}
+/*定义标题文本的样式*/
+body>#navbar>span {
+	float: left;
+	font-size:27px;
+	color: #9939e1
+}
+/*定义导航条超链接样式*/
+#navbar>a {
+	margin:20px;
+    font-size:18px;
+	text-decoration:none;
+    color:#000;
+}
+/*定义搜索框的样式*/
+#navbar>form {
+	float: right;
+}
+/*定义搜索框样式*/
+#navbar>form>input[type="search"] {
+	width:200px;
+	height:30px;
+	border:none;
+	border-radius:3px;
+	padding:10px;
+}
+/*定义搜索按钮样式*/
+#navbar>form>input[type="image"] {
+	vertical-align:middle;
+}
+
+/*定义子级导航条的样式*/
+#subnavbar {
+	border-top: 1px solid #dbdbdb;
+	padding:25px;
+}
+/*定义子级导航条超链接的样式*/
+#subnavbar>a {
+	font-size:18px;
+	text-decoration:none;
+	background-color: #FFF;
+	color:#000;
+	padding:10px 30px;
+	border: 1px solid #FFF;
+	border-radius: 5px;
+	margin:10px;
+}
+/*悬停在标题栏目时的样式*/
+#subnavbar>a:hover {
+	background-color:#d2d3d561;
+}
+/*第一个超链接默认的样式*/
+#subnavbar>a:first-child {
+	background-color:#07c160;
+	color: #FFF;
+}
+
+
+/*定义所有iframe的样式*/
+body>iframe {
+	width:100%;	
+	border:none;
+}
