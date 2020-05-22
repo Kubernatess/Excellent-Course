@@ -1,0 +1,70 @@
+@charset "utf-8";
+/*定义整个容器的样式*/
+body {
+	margin:100px auto;
+	width:80%;
+}
+
+/*定义右键菜单样式*/
+ul {
+	position: absolute;
+	box-shadow:0px 8px 16px rgba(0,0,0,0.2);
+	list-style-type:none;
+	z-index:1;
+    width:100px;
+	padding:0;
+	background-color:#f9f9f9;
+}
+ul>li {
+	padding:12px 16px;
+	cursor:default;
+}
+ul>li:hover {
+	background-color:#f1f1f1	
+}
+
+
+/*定义导航样式*/
+form {	
+	background-color:#F2F2F2;
+	padding:20px 50px;
+	margin-bottom:50px;
+}
+form * {
+	vertical-align:middle;
+}
+form>button {
+	background-color:hsla(120,60%,70%,0);
+	border:none;
+	cursor:pointer;
+}
+form>button>img {
+	height:40px;
+}
+form>a {
+	margin:10px;
+}
+form>a>input {
+	font-size:24px;	
+	text-align:center;
+	width:120px;
+	border:1px solid #000;
+	padding:10px;
+}
+form>a>input:hover {
+	background-color:#d2d3d561;
+	cursor:default;
+}
+
+
+/*定义所有iframe的样式*/
+iframe {
+	width:100%;	
+	border:none;	
+}
+
+
+/*点击栏目时的样式*/
+.tap {
+	background-color:#d2d3d561;
+}

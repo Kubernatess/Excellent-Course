@@ -1,0 +1,126 @@
+@charset "utf-8";
+/*定义右键菜单或字体下拉菜单的样式*/
+ul {
+	position:absolute;
+	background-color:#f9f9f9;
+	list-style-type: none;
+    padding:0;	
+    box-shadow:0px 8px 16px rgba(0,0,0,0.2);
+	z-index:1;
+	margin:0;
+	display:none;
+}
+ul>li {
+    color:black;
+	padding:12px 20px;
+	cursor:default;
+}
+ul>li:hover {
+	background-color: #f1f1f1
+}
+
+
+/*定义侧边表单的样式*/
+#asideForm {
+	float:left;
+	max-width:200px;
+}
+#asideForm>a {
+	display: block;
+}
+#asideForm>a>input {
+	border:none;
+	cursor:default;
+	color:#333;
+}
+#asideForm>button {
+	background-color:hsla(120,60%,70%,0);	
+	border:none;
+	cursor:pointer;
+	margin-top: 10px;
+}
+/*点击超链接时的样式*/
+.tap {
+	border:1.5px solid #79c4ff;
+}
+
+
+/*定义小容器的样式*/
+main {
+	display: inline-block;
+	width: 80%;
+	padding-left:50px;
+	border-left:1px solid #797979;
+}
+
+/*定义编辑器的样式*/
+#editForm {
+	position: relative;
+}
+#editForm button {
+	background-color:hsla(120,60%,70%,0);	
+	border:none;
+	position: relative;
+}
+#editForm button>img {
+	height:45px;	
+}
+#editForm button:hover , .dropbtn:hover {
+	background-color:#87a1a121;
+}
+#editForm button:disabled {
+	background-color: rgb(222, 222, 222);
+}
+/*定义文件上传表单的样式*/
+#editForm button>input {
+	position: absolute;
+	opacity: 0;	
+	left: 0;
+	top: 0;
+	height:60px;
+	width:65px;
+}
+
+#editForm fieldset {
+	border:none;
+	display: inline;
+	padding: 0;
+}
+
+/*定义字体下拉内容的样式*/
+.dropdown-content>li {
+	padding:12px 0;
+	text-align: center;
+}
+.dropdown-content {
+	margin-top: -10px;
+	width:150px;
+}
+.dropdown:hover>.dropdown-content {
+    display:block;
+}
+
+/*定义可编辑容器的样式*/
+#editor {
+	height:500px;
+}
+#editor>span {
+	font-size:24px;	
+}
+
+/*保存按钮和预览按钮的样式*/
+#save , #preview {
+	position:absolute;
+}
+#preview {
+	left:100px;
+}
+
+/*按钮样式*/
+.btn {
+	color:#FFF;
+	background-color:#169BD5;
+	border:1px solid #169BD5;
+	border-radius:5px;
+	padding: 5px 20px;
+}

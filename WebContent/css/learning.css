@@ -1,0 +1,152 @@
+@charset "utf-8";
+/*定义背景样式*/
+body {
+	margin:0;	
+}
+/*定义所有导航样式*/
+nav {	
+	background-color:#F7F7F7;
+	text-align: center;
+	padding:15px 30px;
+}
+
+/*定义一级导航的样式*/
+#navbar>span {
+	float: left;
+	font-size:27px;
+	color: #9939e1;
+}
+#navbar>a {
+	margin:20px;
+    font-size:18px;
+	text-decoration:none;
+    color:#000;
+}
+#navbar>form {
+	float: right;
+}
+#navbar>form>input[type="search"] {
+	width:200px;
+	height:30px;
+	border:none;
+	border-radius:3px;
+	padding:10px;
+}
+#navbar>form>input[type="image"] {
+	vertical-align:middle;
+}
+
+/*定义子级导航条的样式*/
+#subnavbar {
+	border-top: 1px solid #dbdbdb;
+	padding:25px 0;
+}
+#subnavbar>a {
+	font-size:18px;
+	text-decoration:none;
+	background-color: #FFF;
+	color:#000;
+	padding:10px 30px;
+	border: 1px solid #FFF;
+	border-radius: 5px;
+	margin:10px;
+}
+#subnavbar>a:hover {
+	background-color:#d2d3d561;
+}
+
+
+/*定义侧栏的样式*/
+aside {
+	float:left;	
+	max-width:200px;
+	margin-top: 15px;
+}
+aside>a {
+    text-decoration:none;
+	color:#333;
+	display: block;
+	cursor:default;
+	margin:5px 0 0 15px;
+}
+aside>a>img {
+	height:15px;
+}
+
+/*定义小容器的样式*/
+main {
+	display:inline-block;
+	padding: 15px 0 0 50px;
+    margin-left:30px;
+	border-left:1px solid #797979;
+	min-height: 500px;
+	max-width: 80%;
+}
+
+/*点击超链接时的样式*/
+.tap {
+	background-color:#07c160!important;
+	color: #FFF!important;
+}
+.taptap {
+	color:#78b0f6;
+}
+
+
+/*定义评论部分的样式*/
+article {
+	width:50%;
+	margin:100px auto;
+}
+#commentForm {
+	text-align:right;
+}
+article textarea {
+	width:100%;
+}
+article input[type="submit"] {
+	background-color:#169BD5;
+	border:1px solid #169BD5;
+	border-radius:5px;
+	padding:5px 20px;
+	color:#FFF;
+}
+#replyForm ul {
+	list-style-type:none;
+	padding-left:0px;
+}
+#replyForm fieldset {
+	border: none;
+	display: none;
+}
+article li {
+	margin:30px 0;
+}
+article li>button {
+	background-color:hsla(120,60%,70%,0);	
+	border:none;
+	cursor:pointer;
+	color:#78b0f6;
+}
+article li>address {
+	margin:0 20px 0 0;
+	color:#999;
+	display: inline;
+	font-style: normal;
+}
+article li>time {
+	color:#999;
+	float:right;
+}
+article li>p {
+	font-size:18px;
+}
+
+/*按钮样式*/
+.btn {
+	color:#FFF;
+	background-color:#169BD5;
+	border:1px solid #169BD5;
+	border-radius:5px;
+	padding: 5px 20px;
+}

@@ -1,0 +1,37 @@
+/*定义容器的样式*/
+body {
+	margin:50px 100px 0;
+}
+/*定义标题的样式*/
+body>p {
+	font-size:24px;	
+	padding:20px;
+	width:100px;
+	color:#78b0f6;
+	border:1px solid #ddd;
+	border-bottom:none;
+	border-radius:10px 10px 0 0;
+	text-align:center;
+}
+
+/*定义课程链接的样式*/
+a {
+	float:left;
+	text-decoration:none;
+	margin:50px 50px 10px 0;
+	color:#000;
+	text-align: center;
+}
+a>img {
+	height:150px;
+}
+
+/*定义添加按钮的样式*/
+a:last-child {
+	font-size:28px;
+	margin:100px 10px 0 0;
+}
+a:last-child>img {
+	vertical-align: middle;
+	height:50px;
+}

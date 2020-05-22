@@ -1,0 +1,22 @@
+@charset "utf-8";
+body {
+    margin:50px 150px;
+}
+
+#hitcount , body>p {
+    margin-top: 60px;
+}
+samp {
+    font-size: 18px;
+}
+
+#completion , table {
+    margin-top: 100px;
+}
+figure>img {
+    height:20px;
+}
+
+th , td {
+    padding: 10px 20px;
+}

@@ -1,0 +1,80 @@
+@charset "utf-8";
+/*定义背景样式*/
+body {
+	margin:0;	
+	overflow:hidden;
+	background:url(../image/backgroud.png) no-repeat fixed center center / 100% 100%;
+}
+
+
+/*定义登陆边框样式*/
+fieldset {
+	border:1px solid white;
+	border-radius:20px;
+	width:370px;
+	margin:3% auto;
+	padding:30px 50px;
+	text-align:center;
+}
+
+/*定义选项卡的样式*/
+a {
+	font-size:36px;
+	color:#FFF;	
+	cursor:pointer;
+}
+#common {
+	text-align:left;
+	padding:5px 30px 5px 10px;
+	border-bottom:2px solid #33CC33;
+}
+#member {
+	text-align:right;
+	padding:5px 10px 5px 30px;
+}
+
+
+/*定义输入表单的样式*/
+div:nth-of-type(1) {
+	margin-top:80px;	
+	text-align:left;
+}
+div:nth-of-type(2) {
+	margin:60px 0 25px;
+	text-align:left;
+}
+div>hr {
+	border:1px solid #333;
+}
+div>img {
+	height:35px;
+	vertical-align:middle;	
+}
+div>input {
+	width:330px;
+	height:25px;
+	font-size:20px;
+	background-color:rgb(0,0,0,0);
+	border:none;
+	margin-left:5px;
+	vertical-align:middle;	
+}
+
+/*定义'忘记密码'文本样式*/
+a:nth-of-type(3) {
+	float:right;
+	font-size:20px;
+	color:#1E90FF;
+	margin-bottom:30px;
+}
+
+/*定义登陆按钮样式*/
+input[type="submit"] {
+	background-color:#396;
+	border:1px solid #396;
+	width:100%;
+	border-radius:20px;
+	height:70px;	
+	color:#FFF;
+	font-size:20px;
+}

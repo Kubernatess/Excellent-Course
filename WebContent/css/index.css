@@ -1,0 +1,139 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	margin:0;
+}
+
+
+/*定义侧边栏样式*/
+aside {
+	position:absolute;
+	top:150px;
+	right:100px;	
+}
+aside>span:empty {
+	background-color:#199ED8;
+	width:20px;
+	height:45px;
+	float:left;
+	margin:0 10px;
+}
+aside>span {
+	font-size:28px;	
+}
+aside ol>li{	
+	margin:15px 0;
+	font-size:20px;
+}
+aside ol>li>a{
+	text-decoration: none;
+	color: #000;	
+}
+aside ol>li>a:hover {
+	color:#78b0f6;
+}
+
+
+/*定义分类样式*/
+section {
+	background-color:#F2F2F2;
+	padding:10px 20px 15px;	
+	margin-bottom:80px;
+}
+section>ul {
+	margin:5px 0;	
+	padding:0;
+}
+section>ul>li:first-child {
+	font-size:20px;
+}
+section>ul>li:first-child:after {
+	content:"❯";
+	font:900 20px Arial,Helvetica,sans-serif;
+	margin-left:15px;
+}
+section>ul>li {
+	margin:0 15px;	
+	display:inline;	
+}
+/*定义每一行里的每一个超链接的样式*/
+section>ul>li>a {
+	text-decoration:none;
+	color:#000;
+}
+section>ul>li>a:hover {
+	color:#78b0f6;
+}
+
+
+/*定义容器的样式*/
+main {
+	margin-left:150px;
+	padding:50px 0;	
+	width:950px;	
+}
+
+/*定义选项卡里的每一个超链接的样式*/
+main>a {
+	font-size:20px;	
+	padding:20px;
+	border-bottom:1px solid #D3D3D3;
+	color:#78b0f6;
+}
+main>a:hover {
+	background-color:#e6e6fffc;	
+	border:1px solid #ddd;
+	border-radius:10px 10px 0 0;
+}
+.hovering {
+	border:1px	solid #D3D3D3;
+	border-bottom:none;
+	border-radius:10px 10px 0 0;
+	color:#000;
+}
+
+
+table {
+	margin-top:45px;
+}
+th>div {
+	height: 160px;
+	overflow-y: hidden;
+	width:320px;
+	text-align: center;
+}
+th>div>img {
+	width:300px;
+	margin-right:15px;
+}
+th {
+	font-size:24px;
+	text-align:left;
+	vertical-align:top;
+	font-weight: 400;
+}
+th>a {
+	text-decoration: none;
+	color: #000;
+}
+th>a:hover {
+	color:#78b0f6;
+}
+td>span {
+	margin-right:40px;
+	font-size:16px;
+	color:#999;	
+}
+td>p {
+	font-size:16px;
+	white-space:nowrap;
+	width:600px; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+td>img {
+	height:20px;
+}
+td>samp {
+	margin:0 20px 0 5px;
+}
